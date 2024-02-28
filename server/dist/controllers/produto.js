@@ -9,11 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-<<<<<<< HEAD
 exports.newProduct = exports.getProdutos = void 0;
-=======
-exports.getProdutosPublics = exports.getProdutos = void 0;
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
 const produtos_1 = require("../models/produtos");
 const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const listProdutos = yield produtos_1.Produto.findAll();
@@ -22,7 +18,6 @@ const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     });
 });
 exports.getProdutos = getProdutos;
-<<<<<<< HEAD
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { nome } = req.body;
     //Validando usuário, se existe cadastrado
@@ -45,12 +40,3 @@ const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.newProduct = newProduct;
-=======
-const getProdutosPublics = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const listProdutos = yield produtos_1.Produto.findAll();
-    res.json({
-        listProdutos
-    });
-});
-exports.getProdutosPublics = getProdutosPublics;
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d

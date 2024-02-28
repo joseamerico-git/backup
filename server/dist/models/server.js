@@ -18,7 +18,6 @@ const produto_1 = __importDefault(require("../routes/produto"));
 const user_1 = __importDefault(require("../routes/user"));
 const produtos_1 = require("./produtos");
 const users_1 = require("./users");
-const produto_2 = require("../controllers/produto");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -36,12 +35,8 @@ class Server {
     }
     routes() {
         this.app.use('/api/produtos', produto_1.default);
-<<<<<<< HEAD
         this.app.use('/api/produtos/view', produto_1.default);
         this.app.use('/api/produtos/create', produto_1.default);
-=======
-        this.app.use('/api/produtos/view', produto_2.getProdutosPublics);
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
         this.app.use('/api/users', user_1.default);
     }
     midlewares() {
