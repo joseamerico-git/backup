@@ -21,13 +21,8 @@ export class ProductService {
   }
 
   getProducts():Observable<any>{
-<<<<<<< HEAD
     //const token = localStorage.getItem('token');
    // const headers = new HttpHeaders().set('authorization',`Bearer ${token}`)
-=======
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('authorization',`Bearer ${token}`)
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
    // return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`,{headers:headers})
    //const token = localStorage.getItem('token');
   // const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`)
