@@ -9,7 +9,6 @@ export const getProdutos = async (req: Request,res:Response) => {
   })
 }
 
-<<<<<<< HEAD
 
 	
 export const newProduct = async (req: Request, res: Response) => {
@@ -43,12 +42,4 @@ export const newProduct = async (req: Request, res: Response) => {
       })
   }
 
-=======
-export const getProdutosPublics = async (req: Request,res:Response) => {
- 
-  const listProdutos = await Produto.findAll();
-  res.json({
-    listProdutos
-  })
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
 }

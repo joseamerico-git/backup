@@ -49,6 +49,17 @@ class Server {
         // next();
         //   });
         this.app.use((0, cors_1.default)());
+        this.app.use(function (req, res, next) {
+            res.header({ "origin": "*",
+                "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+                "preflightContinue": false,
+                "optionsSuccessStatus": 204 });
+            // res.header('Access-Control-Allow-Origin', '*');
+            // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
+            // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
+            //res.header('Content-Type: application/json');
+            next();
+        });
     }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {

@@ -16,16 +16,9 @@ export const Produto = sequelize.define('produto',{
     },
 
     image:{
-<<<<<<< HEAD
         type: DataTypes.STRING
     },
 
-=======
-        type:DataTypes.STRING
-    },
-
-    
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
     estoque:{
         type: DataTypes.INTEGER
     }

@@ -7,11 +7,12 @@ import { Product } from '../../interfaces/produto';
 import { CommonModule, NgFor } from '@angular/common';
 import { CardsComponent } from '../cards/cards.component';
 import { CadastroProdutosComponent } from '../cadastro-produtos/cadastro-produtos.component';
+import { FileUploadComponent } from '../file-upload-components/file-upload-components.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NavbarComponent,CommonModule,NgFor,CardsComponent,CadastroProdutosComponent],
+  imports: [NavbarComponent,CommonModule,NgFor,CardsComponent,CadastroProdutosComponent,FileUploadComponent],
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'

@@ -5,7 +5,7 @@ import routesUser from '../routes/user'
 
 import { Produto } from './produtos';
 import { User } from './users';
-import { getProdutosPublics } from '../controllers/produto';
+
 
 
 class Server{
@@ -31,12 +31,8 @@ class Server{
 
     routes(){
         this.app.use('/api/produtos',routesProduto)
-<<<<<<< HEAD
         this.app.use('/api/produtos/view',routesProduto)
         this.app.use('/api/produtos/create',routesProduto)
-=======
-        this.app.use('/api/produtos/view',getProdutosPublics)
->>>>>>> 1aa6c24bfd668a01da9633c70c288707ff90884d
         this.app.use('/api/users',routesUser)
     }
    
@@ -54,6 +50,21 @@ class Server{
        //   });
 
         this.app.use(cors());
+
+        this.app.use(function(req, res, next) {
+
+           res.header({"origin": "*",
+            "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+            "preflightContinue": false,
+            "optionsSuccessStatus": 204})
+
+
+           // res.header('Access-Control-Allow-Origin', '*');
+           // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
+           // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
+            //res.header('Content-Type: application/json');
+            next();
+          });
 
     }
 
