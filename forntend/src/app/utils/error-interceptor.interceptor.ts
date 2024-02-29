@@ -22,7 +22,7 @@ export const errorInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
     //console.error(error.message)
     return throwError(()=>{
       if(error===401){
-        errorInterceptorInterceptor.msgError(error.message)
+        errorInterceptorInterceptor.msgError(error.error.msg)
       }
     });
   }));

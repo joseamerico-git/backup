@@ -10,9 +10,11 @@ export class ErrorService {
   constructor(private toastr:ToastrService) { }
 
   msgError(e: HttpErrorResponse) {
-    if (e.error.msg) {
+    if (e.error.message) {
       this.toastr.error(e.error.msg, 'Error');
-
+      console.log(e)
+      
+      
     } else {
       this.toastr.error("Ops! ocorreu um erro comunique-se como o administrador!", 'Error');
     }
