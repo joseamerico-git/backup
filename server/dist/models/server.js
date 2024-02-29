@@ -50,7 +50,7 @@ class Server {
         //   });
         this.app.use((0, cors_1.default)());
         this.app.use(function (req, res, next) {
-            res.header({ "origin": "*",
+            res.header({ "origin": "http://localhost:4200/",
                 "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
                 "preflightContinue": false,
                 "optionsSuccessStatus": 204 });

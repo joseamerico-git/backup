@@ -15,7 +15,7 @@ class Server{
 
     constructor(){
         this.app = express();
-        this.port = process.env.POR || '3050';
+        this.port = process.env.POR || '3001';
         console.log("Estou no construtor da classe Server.")
         this.listen();
         this.midlewares();
