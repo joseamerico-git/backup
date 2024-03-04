@@ -1,27 +1,45 @@
-<form>
-    <div class="form-group">
-      <label for="nomeProd">Nome do Produto</label>
-      <input type="text" class="form-control" id="nomeProd" placeholder="Informe o nome do produto.">
-      
-    </div>
-
-    <div class="form-group">
-        <label for="descProd">Descrição</label>
-        <input type="text" class="form-control" id="descProd" placeholder="Informe uma descrição">
-        
-      </div>
-
-      <div class="form-group">
-        <label for="qtdEstoque">Quantidade em estoque</label>
-        <input type="text" class="form-control" id="qtdEstoque" placeholder="Informe uma descrição">
-        
-      </div>
-
-     
-      <app-file-upload-components></app-file-upload-components>
-   
-   
-
-  
+<h1>Angular 17 Reactive Forms Validation Example - ItSolutionStuff.com</h1>
     
-  </form>
+<form [formGroup]="form" (ngSubmit)="submit()">
+        
+    <div class="form-group">
+        <label for="name">Nome do Produto</label>
+        <input 
+            formControlName="name"
+            id="name" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']">Nome do produto é obrigatório.</div>
+            <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="email">Descricao</label>
+        <input 
+            formControlName="email"
+            id="email" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+            <div *ngIf="f['email'].errors && f['email'].errors['required']">Descrição is required.</div>
+            <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea 
+            formControlName="body"
+            id="body" 
+            type="text" 
+            class="form-control">
+        </textarea>
+        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+            <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
+</form>

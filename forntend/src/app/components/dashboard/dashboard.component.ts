@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
   getProducts(){
     this._productService.getProducts().subscribe(data=>{
-      console.log(data.listProdutos)
+    
       this.produtos = data.listProdutos;
 
     })
