@@ -1,24 +1,80 @@
-<h1>Angular 17 Reactive Forms Validation Example - ItSolutionStuff.com</h1>
+<h1>Dashboard Produtos</h1>
+<br><br>
     
 <form [formGroup]="form" (ngSubmit)="submit()">
         
+   
+
+    <!-- Input nome-->
+
     <div class="form-group">
-        <label for="name">Nome do Produto</label>
-        <input 
-            formControlName="name"
-            id="name" 
-            type="text" 
-            class="form-control">
-        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-            <div *ngIf="f['name'].errors && f['name'].errors['required']">Nome do produto é obrigatório.</div>
-            <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
-        </div>
+      <label for="nome">Nome do Produto</label>
+      <input 
+          formControlName="nome"
+          id="nome" 
+          type="text" 
+          class="form-control">
+      <div *ngIf="f['nome'].touched && f['nome'].invalid" class="alert alert-danger">
+          <div *ngIf="f['nome'].errors && f['nome'].errors['required']">Nome do produto é obrigatório.</div>
+          <div *ngIf="f['nome'].errors && f['nome'].errors['minlength']">Nome should be 3 character.</div>
+      </div>
+  </div>
+
+    <!-- Input descricao-->
+
+    
+    <div class="form-group">
+      <label for="descricao">Descrição do Produto</label>
+      <input 
+      formControlName="descricao"
+          id="descricao" 
+          type="text" 
+          class="form-control">
+      <div *ngIf="f['descricao'].touched && f['descricao'].invalid" class="alert alert-danger">
+          <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descrição do produto é obrigatório.</div>
+          <div *ngIf="f['descricao'].errors && f['descricao'].errors['minlength']">Descrição should be 3 character.</div>
+      </div>
+  </div>
+
+
+  <!--Input estoque-->
+
+
+  <div class="form-group">
+    <label for="estoque">Estoque</label>
+    <input 
+    formControlName="estoque"
+        id="estoque" 
+        type="number" 
+        class="form-control">
+    <div *ngIf="f['estoque'].touched && f['estoque'].invalid" class="alert alert-danger">
+        <div *ngIf="f['estoque'].errors && f['estoque'].errors['required']">Informe a quantidade adquirida.</div>
+       
     </div>
+</div>
+
+
+
+
+
+ <div class="form-group">
+  <label for="name">Name</label>
+  <input 
+      formControlName="name"
+      id="name" 
+      type="text" 
+      class="form-control">
+  <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+      <div *ngIf="f['name'].errors && f['name'].errors['required']">O campo nome é obrigatório!.</div>
+      <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+  </div>
+</div>
+
      
     <div class="form-group">
-        <label for="email">Descricao</label>
+        <label for="email">Email</label>
         <input 
-            formControlName="email"
+        formControlName="email"
             id="email" 
             type="text" 
             class="form-control">
@@ -41,5 +97,7 @@
         </div>
     </div>
     
+    <h1>*************************</h1>
+
     <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
 </form>

@@ -10,12 +10,15 @@ import { Product } from '../interfaces/produto';
 export class ProductService {
   myAppUrl:string;
   myApiUrl:string;
+  myApiUrlCreate:string;
  
  
 
  constructor(private http: HttpClient) {
    this.myAppUrl = environment.endpoint;
    this.myApiUrl = 'api/produtos/view';
+   this.myApiUrlCreate = '/api/produtos/create'
+
 
 
   }
@@ -37,6 +40,10 @@ export class ProductService {
     .pipe(
       catchError(this.errorHandler)
     )
+  }
+
+  create(product:any):Observable<any> {
+    return this.http.post<string>(`${this.myAppUrl}${this.myApiUrlCreate}`,product);
   }
 
   errorHandler(error:any) {

@@ -12,9 +12,9 @@ export const getProdutos = async (req: Request,res:Response) => {
 
 	
 export const newProduct = async (req: Request, res: Response) => {
-
+  console.log("chegou na rota create product")
   const { nome } = req.body;
-
+   console.log(req.body)
   //Validando usuário, se existe cadastrado
   
   const prodRecuperado = await Produto.findOne({ where: { nome: nome } })

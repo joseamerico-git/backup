@@ -11,28 +11,25 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cadastro-produtos.component.css'
 })
 export class CadastroProdutosComponent implements OnInit {
+  
 
   product:any;
-  @Input() nome:string = '';
-
-  @Input() estoque:number = 0;
-  @ViewChild("cpf", {static: true}) cpf: ElementRef | undefined;
+ 
 
    // propriedade que liga o html ao ts
 
   cadastrar() {
-    console.log(this.cpf)  // valor inserido no input
+
   }
  
   ngOnInit(): void {
   
-    this.product = {
-      nome:this.nome,
-      cpf:this.cpf,
-      estoque:this.estoque
-    }
+  
   }
   form = new FormGroup({
+    nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    descricao: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    estoque: new FormControl('', [Validators.required, Validators.minLength(3)]),
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     body: new FormControl('', Validators.required)
@@ -44,6 +41,7 @@ export class CadastroProdutosComponent implements OnInit {
     
   submit(){
     console.log(this.form.value);
+
   }
   
 
