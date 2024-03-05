@@ -2,6 +2,8 @@ import { Component, ElementRef, Input, OnInit, ViewChild, input } from '@angular
 import { FileUploadComponent } from '../file-upload-components/file-upload-components.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ProductService } from '../../services/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro-produtos',
@@ -12,6 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class CadastroProdutosComponent implements OnInit {
   
+  constructor(private _produtoServer: ProductService, private toastr: ToastrService){
+
+  }
 
   product:any;
  
@@ -30,9 +35,9 @@ export class CadastroProdutosComponent implements OnInit {
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
     descricao: new FormControl('', [Validators.required, Validators.minLength(3)]),
     estoque: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    body: new FormControl('', Validators.required)
+   // name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+   // email: new FormControl('', [Validators.required, Validators.email]),
+    //body: new FormControl('', Validators.required)
   });
     
   get f(){
@@ -41,6 +46,13 @@ export class CadastroProdutosComponent implements OnInit {
     
   submit(){
     console.log(this.form.value);
+    this._produtoServer.create(this.form.value).subscribe(response=>{
+      this.toastr.success(response.msg)
+      
+   
+    })
+
+    
 
   }
   

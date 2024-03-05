@@ -21,7 +21,8 @@ export const newProduct = async (req: Request, res: Response) => {
 
   if (prodRecuperado) {
       return res.status(400).json({
-          msg: `Produto com o nome ${nome} já existe`
+          msg: `Produto com o nome ${nome} já existe`,
+          produto:prodRecuperado
       })
   }
 

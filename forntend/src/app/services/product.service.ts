@@ -17,7 +17,7 @@ export class ProductService {
  constructor(private http: HttpClient) {
    this.myAppUrl = environment.endpoint;
    this.myApiUrl = 'api/produtos/view';
-   this.myApiUrlCreate = '/api/produtos/create'
+   this.myApiUrlCreate = 'api/produtos/create'
 
 
 

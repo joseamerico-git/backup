@@ -26,7 +26,8 @@ const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const prodRecuperado = yield produtos_1.Produto.findOne({ where: { nome: nome } });
     if (prodRecuperado) {
         return res.status(400).json({
-            msg: `Produto com o nome ${nome} já existe`
+            msg: `Produto com o nome ${nome} já existe`,
+            produto: prodRecuperado
         });
     }
     try {

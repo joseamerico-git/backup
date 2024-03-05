@@ -9,15 +9,20 @@ body{
     width: 100vw;
     height: 100vh;
     padding: 1rem;
-    background-color: #b3a9a9;
+ 
+   
+}
+.__containner__dashboard{
+    background-color: rgb(161, 165, 169);
 }
 
 .wrapper{
-    background-color: rgba(149, 137, 140, 0.93);
+    background-color: rgba(190, 184, 185, 0.93);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    
 }
 .logo{
     height: 130px;
