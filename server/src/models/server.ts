@@ -1,10 +1,12 @@
 import express, {Application} from 'express';
 import cors from 'cors';
 import routesProduto from '../routes/produto'
+import routesCategoria from '../routes/categoria'
 import routesUser from '../routes/user'
 
 import { Produto } from './produtos';
 import { User } from './users';
+import { Categoria } from './categoria';
 
 
 
@@ -30,6 +32,7 @@ class Server{
     }
 
     routes(){
+        this.app.use('/api/categorias',routesCategoria)
         this.app.use('/api/produtos',routesProduto)
         this.app.use('/api/produtos/view',routesProduto)
         this.app.use('/api/produtos/create',routesProduto)
@@ -72,6 +75,7 @@ class Server{
         try {
             Produto.sync();
             User.sync();
+            Categoria.sync();
            
             
         } catch (error) {

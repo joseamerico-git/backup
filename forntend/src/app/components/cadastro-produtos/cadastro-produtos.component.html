@@ -34,6 +34,15 @@
       </div>
   </div>
 
+  <!-- Combobox  -->
+
+
+  <select ng-model="selectedCat">
+    <option *ngFor="let categoria of listCategorias" value="{{categoria.descricao}}">{{categoria.descricao}}</option>
+  </select>
+  
+  <h1>You selected: {{selectedCat}}</h1>
+
 
   <!--Input estoque-->
 

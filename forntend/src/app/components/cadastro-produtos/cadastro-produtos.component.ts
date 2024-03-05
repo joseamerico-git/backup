@@ -1,19 +1,24 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, input } from '@angular/core';
 import { FileUploadComponent } from '../file-upload-components/file-upload-components.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../interfaces/produto';
+import { CategoriaServiceService } from '../../services/categoria.service.service';
+import { Categoria } from '../../interfaces/categoria';
 
 @Component({
   selector: 'app-cadastro-produtos',
   standalone: true,
-  imports: [FileUploadComponent,FormsModule, ReactiveFormsModule,CommonModule],
+  imports: [FileUploadComponent,FormsModule, ReactiveFormsModule,CommonModule,NgFor],
   templateUrl: './cadastro-produtos.component.html',
   styleUrl: './cadastro-produtos.component.css'
 })
 export class CadastroProdutosComponent implements OnInit {
+  listCategorias:Categoria[] | undefined;
+  categoria:Categoria | undefined;
+  selectedCat:Categoria | undefined;
   nome:string ='';
   descricao:string='';
   estoque:number =0;
@@ -22,7 +27,7 @@ export class CadastroProdutosComponent implements OnInit {
   NAME_IMAGE:string = 'no-image.jpg'
   product:any;
 
-  constructor(private _produtoServer: ProductService, private toastr: ToastrService){
+  constructor(private _produtoServer: ProductService, private _categoriaService: CategoriaServiceService,private toastr: ToastrService){
 
   }
 
@@ -61,7 +66,9 @@ export class CadastroProdutosComponent implements OnInit {
  
  
   ngOnInit(): void {
-  
+    
+    
+    this.getCategorias();
   
   }
   form = new FormGroup({
@@ -84,9 +91,15 @@ export class CadastroProdutosComponent implements OnInit {
       this.cadastrar();
 
   }
+
+  getCategorias(){
+    this._categoriaService.getCategorias().subscribe(data=>{
+      console.log(data.listCategorias)
+      this.listCategorias = data.listCategorias;
+  })
   
 
-
+  }
   
 
 }

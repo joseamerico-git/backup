@@ -7,7 +7,7 @@
   .card{
     width: 250px;
     height: 300px;
-    border: solid 1px red;
+    padding: 10px;
   }
   
   .__container{
@@ -26,16 +26,25 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 1px solid yellow;
-    font-size: 8px;
+    
+    
     font-style: bold;
+    padding:1rem;
+    border: 1px solid red;
 
+    
+
+ }
+
+ .card-title{
+    font-size: 20px;
  }
   .__container > ul{
     display: flex;
     justify-content: center;
      list-style: none;
      padding: 1rem;
+ 
   }
  
 

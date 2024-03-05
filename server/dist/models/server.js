@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const produto_1 = __importDefault(require("../routes/produto"));
+const categoria_1 = __importDefault(require("../routes/categoria"));
 const user_1 = __importDefault(require("../routes/user"));
 const produtos_1 = require("./produtos");
 const users_1 = require("./users");
+const categoria_2 = require("./categoria");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -34,6 +36,7 @@ class Server {
         });
     }
     routes() {
+        this.app.use('/api/categorias', categoria_1.default);
         this.app.use('/api/produtos', produto_1.default);
         this.app.use('/api/produtos/view', produto_1.default);
         this.app.use('/api/produtos/create', produto_1.default);
@@ -66,6 +69,7 @@ class Server {
             try {
                 produtos_1.Produto.sync();
                 users_1.User.sync();
+                categoria_2.Categoria.sync();
             }
             catch (error) {
                 console.log("Não houve conexão com o banco de dados!", error);
