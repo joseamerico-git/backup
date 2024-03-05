@@ -45,7 +45,12 @@ export class CadastroProdutosComponent implements OnInit {
 
 
   }
- 
+  onChange($event:any) {
+    this.selectedCat = $event.target.value;
+    console.log(this.selectedCat);
+    // I want to do something here with the new selectedDevice, but what I
+    // get here is always the last selection, not the one I just selected.
+}
 
    // propriedade que liga o html ao ts
 

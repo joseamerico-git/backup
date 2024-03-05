@@ -37,7 +37,7 @@
   <!-- Combobox  -->
 
 
-  <select ng-model="selectedCat">
+  <select ng-model="selectedCat" (change)="onChange($event)">
     <option *ngFor="let categoria of listCategorias" value="{{categoria.descricao}}">{{categoria.descricao}}</option>
   </select>
   
