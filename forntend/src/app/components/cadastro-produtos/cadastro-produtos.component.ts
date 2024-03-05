@@ -18,7 +18,8 @@ export class CadastroProdutosComponent implements OnInit {
   descricao:string='';
   estoque:number =0;
   prod:Product | undefined;
-  image:string='../../../assets/img';
+  URL_IMAGE:string='../../../assets/img/';
+  NAME_IMAGE:string = 'no-image.jpg'
   product:any;
 
   constructor(private _produtoServer: ProductService, private toastr: ToastrService){
@@ -30,13 +31,15 @@ export class CadastroProdutosComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
     console.log("FileUpload -> files", fileList);
-    if(fileList[0])
-    this.image = `${this.image}/${fileList[0].name}`;
-    } else{
-      this.image = `${this.image}/no-image.jpg`;
-    }
-    }
+    if(fileList[0]!=null)
+    this.NAME_IMAGE = `${fileList[0].name}`
+   
+    } 
 
+
+
+
+  }
  
 
    // propriedade que liga o html ao ts
@@ -45,10 +48,8 @@ export class CadastroProdutosComponent implements OnInit {
   
     console.log(this.form.value);
     const p:any = this.form.value
-   
-    console.log(p.nome)
-    p.image = `${this.image}`;
-    
+    p.image = this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`;;
+        
    
 
     this._produtoServer.create(p).subscribe(response=>{

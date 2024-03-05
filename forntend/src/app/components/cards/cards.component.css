@@ -4,7 +4,11 @@
     margin: 0;
   }
   
-  
+  .card{
+    width: 250px;
+    height: 300px;
+    border: solid 1px red;
+  }
   
   .__container{
     display: grid;
@@ -13,9 +17,22 @@
     padding: 0;
     list-style: none;
     justify-content: center;
+    
+   
 
 
   }
+ .card-body{
+    display: flex;
+    
+ }
+  .__container > ul{
+    display: flex;
+    justify-content: center;
+  }
+ 
+
+ 
 
   @media screen and (min-width: 380px) {
     .__container {
