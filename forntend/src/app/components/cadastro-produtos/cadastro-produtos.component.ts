@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { Product } from '../../interfaces/produto';
 
 @Component({
   selector: 'app-cadastro-produtos',
@@ -13,7 +14,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './cadastro-produtos.component.css'
 })
 export class CadastroProdutosComponent implements OnInit {
-  
+  nome:string ='';
+  descricao:string='';
+  estoque:number =0;
+  prod:Product | undefined;
+
   constructor(private _produtoServer: ProductService, private toastr: ToastrService){
 
   }
@@ -24,8 +29,22 @@ export class CadastroProdutosComponent implements OnInit {
    // propriedade que liga o html ao ts
 
   cadastrar() {
+  
+    console.log(this.form.value);
+    const p:any = this.form.value
+    console.log("*******")
+    console.log(p.nome)
+    p.image = "../../../assets/img/no-image.jpg";
+    
+   
 
+    this._produtoServer.create(p).subscribe(response=>{
+      this.toastr.success(response.msg)
+      this.form.reset;
+         
+    })
   }
+ 
  
   ngOnInit(): void {
   
@@ -35,6 +54,8 @@ export class CadastroProdutosComponent implements OnInit {
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
     descricao: new FormControl('', [Validators.required, Validators.minLength(3)]),
     estoque: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    
+
    // name: new FormControl('', [Validators.required, Validators.minLength(3)]),
    // email: new FormControl('', [Validators.required, Validators.email]),
     //body: new FormControl('', Validators.required)
@@ -45,14 +66,8 @@ export class CadastroProdutosComponent implements OnInit {
   }
     
   submit(){
-    console.log(this.form.value);
-    this._produtoServer.create(this.form.value).subscribe(response=>{
-      this.toastr.success(response.msg)
       
-   
-    })
-
-    
+      this.cadastrar();
 
   }
   
