@@ -24,11 +24,18 @@
   }
  .card-body{
     display: flex;
-    
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid yellow;
+    font-size: 8px;
+    font-style: bold;
+
  }
   .__container > ul{
     display: flex;
     justify-content: center;
+     list-style: none;
+     padding: 1rem;
   }
  
 
