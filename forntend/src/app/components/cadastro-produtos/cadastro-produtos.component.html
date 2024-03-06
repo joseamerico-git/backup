@@ -79,15 +79,21 @@
 
         <div class="form-group addImage">
 
-            <div class="__container_preview">
-                <img class="img_preview" src={{URL_IMAGE}}
-                    alt="Imagem do produto" />
-
-            </div>
+            
 
             <input class="btn btn-primary form-control inp-prod" type="file" (change)="uploadFile($event)">
 
         </div>
+        <br>
+        <div class="container_preview_cont">
+        <div class="__container_preview">
+            <img class="img_preview" src={{URL_IMAGE}}
+                alt="Imagem do produto" />
+
+        </div>
+
+    </div>
+
         <br><br>
         <hr />
 

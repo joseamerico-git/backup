@@ -37,6 +37,7 @@ export class CadastroProdutosComponent implements OnInit {
     if (fileList) {
     console.log("FileUpload -> files", fileList);
     if(fileList[0]!=null)
+    this.URL_IMAGE='../../../assets/img/';
     this.NAME_IMAGE = `${fileList[0].name}`
    
     } 
@@ -59,7 +60,7 @@ export class CadastroProdutosComponent implements OnInit {
   
     console.log(this.form.value);
     const p:any = this.form.value
-    p.image = this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`;;
+    p.image = this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`;
          
    
 
@@ -73,7 +74,9 @@ export class CadastroProdutosComponent implements OnInit {
  
   ngOnInit(): void {
     
-    
+    this.URL_IMAGE='../../../assets/img/';
+    this.NAME_IMAGE = 'no-image.jpg'
+   
     this.getCategorias();
   
   }
