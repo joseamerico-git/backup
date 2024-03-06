@@ -23,5 +23,5 @@ exports.Produto = connection_1.default.define('produto', {
     },
     estoque: {
         type: sequelize_1.DataTypes.INTEGER
-    }
+    },
 });

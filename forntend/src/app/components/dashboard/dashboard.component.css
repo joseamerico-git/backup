@@ -1,20 +1,2 @@
-.__containner__dashboard{
-    background-color:#e2e0d9;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-table{
-    background-color: gray;
-}
 
-.__table{
-    display: flex;
-   justify-content: center;
-}
-
-.__img__container{
-    width: 60px;
-    height: 60px;
-}
 

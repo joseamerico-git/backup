@@ -1,126 +1,146 @@
+
+<div class="containner__produtos">
+
+    <form class="myform" [formGroup]="form" (ngSubmit)="submit()">
+
+        <!-- Input nome-->
+
+        <div class="form-group">
+            <label for="nome">Nome do Produto</label>
+            <input
+                formControlName="nome"
+                id="nome"
+                type="text"
+                class="form-control inp-prod">
+            <div *ngIf="f['nome'].touched && f['nome'].invalid"
+                class="alert alert-danger">
+                <div
+                    *ngIf="f['nome'].errors && f['nome'].errors['required']">Nome
+                    do produto é obrigatório.</div>
+                <div
+                    *ngIf="f['nome'].errors && f['nome'].errors['minlength']">Nome
+                    should be 3 character.</div>
+            </div>
+        </div>
+
+        <!-- Input descricao-->
+
+        <div class="form-group">
+            <label for="descricao">Descrição do Produto</label>
+            <input 
+                formControlName="descricao"
+                id="descricao"
+                type="text"
+                class="form-control inp-prod">
+            <div *ngIf="f['descricao'].touched && f['descricao'].invalid"
+                class="alert alert-danger">
+                <div
+                    *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descrição
+                    do produto é obrigatório.</div>
+                <div
+                    *ngIf="f['descricao'].errors && f['descricao'].errors['minlength']">Descrição
+                    should be 3 character.</div>
+            </div>
+        </div>
+
+        <!-- Combobox  -->
+        <div class="form-group">
+            <label for="comb">Descrição do Produto</label>
+
+            <select id="comb" class="form-select" ng-model="selectedCat"
+                (change)="onChange($event)">
+                <option *ngFor="let categoria of listCategorias"
+                    value="{{categoria.descricao}}">{{categoria.descricao}}</option>
+            </select>
+
+            <p>You selected: {{selectedCat}}</p>
+
+        </div>
+
+        <!--Input estoque-->
+
+        <div class="form-group">
+            <label for="estoque">Estoque</label>
+            <input
+                formControlName="estoque"
+                id="estoque"
+                type="number"
+                class="form-control inp-prod">
+            <div *ngIf="f['estoque'].touched && f['estoque'].invalid"
+                class="alert alert-danger">
+                <div
+                    *ngIf="f['estoque'].errors && f['estoque'].errors['required']">Informe
+                    a quantidade adquirida.</div>
+
+            </div>
+        </div>
+
+        <!-- Input file-->
+
+        <div class="form-group addImage">
+
+            <div class="__container_preview">
+                <img class="img_preview" src={{URL_IMAGE}}
+                    alt="Imagem do produto" />
+
+            </div>
+
+            <input class="btn btn-primary form-control inp-prod" type="file" (change)="uploadFile($event)">
+
+        </div>
+        <br><br>
+        <hr />
+
+        <button class="btn btn-primary" [disabled]="form.invalid"
+            type="submit">Salvar</button>
+
+        <!--
     
-<form [formGroup]="form" (ngSubmit)="submit()">
+    
+     <div class="form-group">
+      <label for="name">Name</label>
+      <input 
+          formControlName="name"
+          id="name" 
+          type="text" 
+          class="form-control">
+      <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+          <div *ngIf="f['name'].errors && f['name'].errors['required']">O campo nome é obrigatório!.</div>
+          <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+      </div>
+    </div>
+    
+         
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+            formControlName="email"
+                id="email" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Descrição is required.</div>
+                <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+            </div>
+        </div>
+         
+        <div class="form-group">
+            <label for="body">Body</label>
+            <textarea 
+                formControlName="body"
+                id="body" 
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+                <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
+            </div>
+        </div>
         
-   
-
-    <!-- Input nome-->
-
-    <div class="form-group">
-      <label for="nome">Nome do Produto</label>
-      <input 
-          formControlName="nome"
-          id="nome" 
-          type="text" 
-          class="form-control">
-      <div *ngIf="f['nome'].touched && f['nome'].invalid" class="alert alert-danger">
-          <div *ngIf="f['nome'].errors && f['nome'].errors['required']">Nome do produto é obrigatório.</div>
-          <div *ngIf="f['nome'].errors && f['nome'].errors['minlength']">Nome should be 3 character.</div>
-      </div>
-  </div>
-
-    <!-- Input descricao-->
-
+        <h1>*************************</h1>
     
-    <div class="form-group">
-      <label for="descricao">Descrição do Produto</label>
-      <input 
-      formControlName="descricao"
-          id="descricao" 
-          type="text" 
-          class="form-control">
-      <div *ngIf="f['descricao'].touched && f['descricao'].invalid" class="alert alert-danger">
-          <div *ngIf="f['descricao'].errors && f['descricao'].errors['required']">Descrição do produto é obrigatório.</div>
-          <div *ngIf="f['descricao'].errors && f['descricao'].errors['minlength']">Descrição should be 3 character.</div>
-      </div>
-  </div>
+        -->
 
-  <!-- Combobox  -->
+    </form>
 
-
-  <select ng-model="selectedCat" (change)="onChange($event)">
-    <option *ngFor="let categoria of listCategorias" value="{{categoria.descricao}}">{{categoria.descricao}}</option>
-  </select>
-  
-  <h1>You selected: {{selectedCat}}</h1>
-
-
-  <!--Input estoque-->
-
-
-  <div class="form-group">
-    <label for="estoque">Estoque</label>
-    <input 
-    formControlName="estoque"
-        id="estoque" 
-        type="number" 
-        class="form-control">
-    <div *ngIf="f['estoque'].touched && f['estoque'].invalid" class="alert alert-danger">
-        <div *ngIf="f['estoque'].errors && f['estoque'].errors['required']">Informe a quantidade adquirida.</div>
-       
-    </div>
 </div>
-
-
-
-
-
-
-<!--
-
-
- <div class="form-group">
-  <label for="name">Name</label>
-  <input 
-      formControlName="name"
-      id="name" 
-      type="text" 
-      class="form-control">
-  <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
-      <div *ngIf="f['name'].errors && f['name'].errors['required']">O campo nome é obrigatório!.</div>
-      <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
-  </div>
-</div>
-
-     
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input 
-        formControlName="email"
-            id="email" 
-            type="text" 
-            class="form-control">
-        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
-            <div *ngIf="f['email'].errors && f['email'].errors['required']">Descrição is required.</div>
-            <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
-        </div>
-    </div>
-     
-    <div class="form-group">
-        <label for="body">Body</label>
-        <textarea 
-            formControlName="body"
-            id="body" 
-            type="text" 
-            class="form-control">
-        </textarea>
-        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
-            <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
-        </div>
-    </div>
-    
-    <h1>*************************</h1>
-
-    -->
-
-    
-    <img src={{URL_IMAGE}} alt="Imagem do produto"/>
-
-
-    <!-- Input file-->
-<h1>Adicionar uma imagem</h1>
-<input type="file" (change)="uploadFile($event)">
-
-
-<button class="btn btn-primary" [disabled]="form.invalid" type="submit">Salvar</button>
-</form>
-

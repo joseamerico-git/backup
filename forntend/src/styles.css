@@ -1,31 +1,128 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
     font-family: 'Roboto', sans-serif;
-     box-sizing: border-box;
- 
+    box-sizing: border-box;
+
 }
 
-body{
+body {
     width: 100vw;
     height: 100vh;
-    padding: 1rem;
- 
    
-}
-.__containner__dashboard{
-    background-color: rgb(161, 165, 169);
+    background-color: #495057;
+    color: chocolate;
+
+
 }
 
-.wrapper{
-    background-color: rgba(190, 184, 185, 0.93);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    
+.__containner__dashboard {
+    background-color: #495057;
 }
-.logo{
+
+
+
+.logo {
     height: 130px;
     margin-bottom: 10px;
 }
 
+.__containner__dashboard {
+    background-color:#3a383880;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: -2px 7px 13px -1px rgb(24, 23, 24);
+    -moz-box-shadow: -2px 7px 13px -1px rgb(29, 25, 29);
+    box-shadow: -2px 7px 13px -1px rgb(24, 22, 24);
+}
+
+
+
+
+.__img__container {
+    width: 100px;
+    height: 100px;
+    border: solid 1px greenyellow;
+}
+
+.containner__produtos {
+    color: burlywood;
+    padding: 1rem;
+}
+
+.addImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.myform {
+    padding: 1rem;
+}
+
+.form-group {
+    padding: 0.5rem;
+}
+
+.img_preview {
+    width: 100%;
+    height: 100%;
+}
+
+.__container_preview {
+    width: 200px;
+    height: 200px;
+}
+
+.body_login {
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    -webkit-box-shadow: -2px 7px 13px -1px rgb(24, 23, 24);
+    -moz-box-shadow: -2px 7px 13px -1px rgb(29, 25, 29);
+    box-shadow: -2px 7px 13px -1px rgb(24, 22, 24);
+    background-color:#3a383880;
+    border-radius: 10px;
+}
+
+.wrapper {
+    background-color:#a5a5a580;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+.form-control{
+    text-align: center;
+    padding:8px;
+}
+
+p{
+    color:#cedfea;
+}
+.links{
+    color:#d0d0d0;
+    border:solid 1px rgb(202, 106, 32);
+}
+.row{
+    padding: 20px;
+}
+.myspan-hover:hover{
+   
+    border: 1px solid #cedfea;
+    
+}
+
+.container{
+    background-color: #12381dd4;;
+}
+
+.inp-prod{
+    background-color: rgba(13, 110, 253, 0.25);
+}

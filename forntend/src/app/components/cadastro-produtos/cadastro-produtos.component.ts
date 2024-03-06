@@ -60,7 +60,7 @@ export class CadastroProdutosComponent implements OnInit {
     console.log(this.form.value);
     const p:any = this.form.value
     p.image = this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`;;
-        
+         
    
 
     this._produtoServer.create(p).subscribe(response=>{
