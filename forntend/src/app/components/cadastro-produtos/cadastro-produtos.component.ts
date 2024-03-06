@@ -23,8 +23,10 @@ export class CadastroProdutosComponent implements OnInit {
   descricao:string='';
   estoque:number =0;
   prod:Product | undefined;
+  imageCarregada:boolean =false;
   URL_IMAGE:string='../../../assets/img/';
-  NAME_IMAGE:string = 'no-image.jpg'
+  NAME_IMAGE:string = '';
+ 
   product:any;
 
   constructor(private _produtoServer: ProductService, private _categoriaService: CategoriaServiceService,private toastr: ToastrService){
@@ -36,11 +38,16 @@ export class CadastroProdutosComponent implements OnInit {
     let fileList: FileList | null = element.files;
     if (fileList) {
     console.log("FileUpload -> files", fileList);
-    if(fileList[0]!=null)
-    this.URL_IMAGE='../../../assets/img/';
-    this.NAME_IMAGE = `${fileList[0].name}`
    
-    } 
+    if(fileList[0]!=null)
+     
+    this.NAME_IMAGE = `${fileList[0].name}`
+    
+     this.imageCarregada = true;
+   
+    } else {
+       this.NAME_IMAGE = 'no-image.jpg';
+    }
 
 
 
@@ -60,7 +67,10 @@ export class CadastroProdutosComponent implements OnInit {
   
     console.log(this.form.value);
     const p:any = this.form.value
-    p.image = this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`;
+  
+    this.URL_IMAGE ='../../../assets/img/';
+    this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`
+    p.image = this.URL_IMAGE;
          
    
 
@@ -76,7 +86,7 @@ export class CadastroProdutosComponent implements OnInit {
     
     this.URL_IMAGE='../../../assets/img/';
     this.NAME_IMAGE = 'no-image.jpg'
-   
+    this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`
     this.getCategorias();
   
   }
