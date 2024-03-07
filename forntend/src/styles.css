@@ -65,9 +65,12 @@ body {
 }
 
 .form-group {
+    color:rgb(241, 246, 245);
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
+    text-align: left;
+    font-style: bold;
   
 }
 
