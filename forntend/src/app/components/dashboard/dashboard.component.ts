@@ -19,23 +19,13 @@ import { FileUploadComponent } from '../file-upload-components/file-upload-compo
 })
 export class DashboardComponent implements OnInit {
   produtos:any= []
-  constructor(private _productService: ProductService){
+  constructor(){
    
   }
   ngOnInit(): void {
-  this.getProducts()
+  
   
   }
 
-  getProducts(){
-    this._productService.getProducts().subscribe(data=>{
-    
-      this.produtos = data.listProdutos;
-
-    })
-
-    
-
-    
-  }
+  
 }

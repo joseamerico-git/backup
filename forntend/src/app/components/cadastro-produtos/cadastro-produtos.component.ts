@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from '../../interfaces/produto';
 import { CategoriaServiceService } from '../../services/categoria.service.service';
 import { Categoria } from '../../interfaces/categoria';
+import { CardsComponent } from '../cards/cards.component';
 
 @Component({
   selector: 'app-cadastro-produtos',
@@ -26,11 +27,13 @@ export class CadastroProdutosComponent implements OnInit {
   imageCarregada:boolean =false;
   URL_IMAGE:string='../../../assets/img/';
   NAME_IMAGE:string = '';
- 
+  produtos:any= []
+  public cardComponent: CardsComponent | undefined;
   product:any;
 
-  constructor(private _produtoServer: ProductService, private _categoriaService: CategoriaServiceService,private toastr: ToastrService){
 
+  constructor(private _produtoService: ProductService, private _categoriaService: CategoriaServiceService,private toastr: ToastrService){
+       
   }
 
   uploadFile(event: Event) {
@@ -74,16 +77,20 @@ export class CadastroProdutosComponent implements OnInit {
          
    
 
-    this._produtoServer.create(p).subscribe(response=>{
+    this._produtoService.create(p).subscribe(response=>{
       this.toastr.success(response.msg)
       this.form.reset;
+      this.getProducts();
+      this.cardComponent?.getProducts();
          
     })
+
+   
   }
  
  
   ngOnInit(): void {
-    
+    this.getProducts();
     this.URL_IMAGE='../../../assets/img/';
     this.NAME_IMAGE = 'no-image.jpg'
     this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`
@@ -109,12 +116,26 @@ export class CadastroProdutosComponent implements OnInit {
       
       this.cadastrar();
 
+
+  }
+
+  getProducts(){
+    this._produtoService.getProducts().subscribe(data=>{
+    
+      this.produtos = data.listProdutos;
+
+    })
+
+    
+
+    
   }
 
   getCategorias(){
     this._categoriaService.getCategorias().subscribe(data=>{
       console.log(data.listCategorias)
       this.listCategorias = data.listCategorias;
+      
   })
   
 
