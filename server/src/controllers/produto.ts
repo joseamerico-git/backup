@@ -1,9 +1,19 @@
 import {Request, Response} from 'express';
 import { Produto } from '../models/produtos';
+import { Categoria } from '../models/categorias';
 
 export const getProdutos = async (req: Request,res:Response) => {
  
-  const listProdutos = await Produto.findAll();
+  const listProdutos = await Produto.findAll({
+    order: [['id','DESC']],
+    
+    include: [{
+      model: Categoria,
+      
+    }]
+
+
+  });
   res.json({
     listProdutos
   })

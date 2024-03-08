@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize"
 import sequelize  from "../db/connection"
-import { Categoria } from "./categoria"
+import { Categoria } from "./categorias"
+
 export const Produto = sequelize.define('produto',{
     id:{
         type: DataTypes.INTEGER,
@@ -23,8 +24,17 @@ export const Produto = sequelize.define('produto',{
     estoque:{
         type: DataTypes.INTEGER
     },
+   
 
+    categoriaId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+       
+    } ,
     
+ 
     
-    
-})
+})  
+Produto.belongsTo(Categoria, {foreignKey:'categoriaId'})   
+
+

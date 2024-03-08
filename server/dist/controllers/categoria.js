@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.newCategoria = exports.getCategorias = void 0;
-const categoria_1 = require("../models/categoria");
+const categorias_1 = require("../models/categorias");
 const getCategorias = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const listCategorias = yield categoria_1.Categoria.findAll();
+    const listCategorias = yield categorias_1.Categoria.findAll();
     res.json({
         listCategorias
     });
@@ -21,7 +21,7 @@ exports.getCategorias = getCategorias;
 const newCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { descricao } = req.body;
     console.log(req.body);
-    const categoriaRecuperada = yield categoria_1.Categoria.findOne({ where: { descricao: descricao } });
+    const categoriaRecuperada = yield categorias_1.Categoria.findOne({ where: { descricao: descricao } });
     if (categoriaRecuperada) {
         return res.status(400).json({
             msg: `Categoria com a descrição " ${descricao} " já existe`,
@@ -29,7 +29,7 @@ const newCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         });
     }
     try {
-        yield categoria_1.Categoria.create(req.body);
+        yield categorias_1.Categoria.create(req.body);
         res.json({
             msg: `Categoria ${descricao} cadastrado com sucesso!`
         });

@@ -50,7 +50,7 @@
             <select id="comb" class="form-select" ng-model="selectedCat"
                 (change)="onChange($event)">
                 <option *ngFor="let categoria of listCategorias"
-                    value="{{categoria.descricao}}">{{categoria.descricao}}</option>
+                    value="{{categoria.id}}">{{categoria.descricao}}</option>
             </select>
 
             <p>You selected: {{selectedCat}}</p>

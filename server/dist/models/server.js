@@ -19,7 +19,7 @@ const categoria_1 = __importDefault(require("../routes/categoria"));
 const user_1 = __importDefault(require("../routes/user"));
 const produtos_1 = require("./produtos");
 const users_1 = require("./users");
-const categoria_2 = require("./categoria");
+const categorias_1 = require("./categorias");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -52,24 +52,25 @@ class Server {
         // next();
         //   });
         this.app.use((0, cors_1.default)());
-        this.app.use(function (req, res, next) {
-            res.header({ "origin": "http://localhost:4200/",
-                "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-                "preflightContinue": false,
-                "optionsSuccessStatus": 204 });
-            // res.header('Access-Control-Allow-Origin', '*');
-            // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
-            // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
-            //res.header('Content-Type: application/json');
-            next();
-        });
+        //this.app.use(function(req, res, next) {
+        //res.header({"origin": "http://localhost:4200/",
+        //  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+        //  "preflightContinue": false,
+        // "optionsSuccessStatus": 204})
+        // res.header('Access-Control-Allow-Origin', '*');
+        // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
+        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
+        //res.header('Content-Type: application/json');
+        // next();
+        //});
     }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                produtos_1.Produto.sync();
                 users_1.User.sync();
-                categoria_2.Categoria.sync();
+                categorias_1.Categoria.sync();
+                produtos_1.Produto.sync();
+                // Produto.sync({force:true});
             }
             catch (error) {
                 console.log("Não houve conexão com o banco de dados!", error);

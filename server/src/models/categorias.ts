@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../db/connection";
+
 export const Categoria = sequelize.define('categoria',{
     id:{
         type:DataTypes.INTEGER,
@@ -12,6 +13,7 @@ export const Categoria = sequelize.define('categoria',{
         unique:true,
         allowNull:false
 
-    }
+    },
+   
    
 })

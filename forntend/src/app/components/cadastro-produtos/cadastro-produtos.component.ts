@@ -58,7 +58,8 @@ export class CadastroProdutosComponent implements OnInit {
   }
   onChange($event:any) {
     this.selectedCat = $event.target.value;
-    console.log(this.selectedCat);
+    
+    
     
     // I want to do something here with the new selectedDevice, but what I
     // get here is always the last selection, not the one I just selected.
@@ -74,7 +75,7 @@ export class CadastroProdutosComponent implements OnInit {
     this.URL_IMAGE ='../../../assets/img/';
     this.URL_IMAGE = `${this.URL_IMAGE}${this.NAME_IMAGE}`
     p.image = this.URL_IMAGE;
-         
+    p.categoriaId = this.selectedCat;     
    
 
     this._produtoService.create(p).subscribe(response=>{
@@ -121,7 +122,7 @@ export class CadastroProdutosComponent implements OnInit {
 
   getProducts(){
     this._produtoService.getProducts().subscribe(data=>{
-    
+      console.log(data.listProdutos)
       this.produtos = data.listProdutos;
 
     })

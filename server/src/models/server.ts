@@ -6,7 +6,7 @@ import routesUser from '../routes/user'
 
 import { Produto } from './produtos';
 import { User } from './users';
-import { Categoria } from './categoria';
+import { Categoria } from './categorias';
 
 
 
@@ -54,28 +54,31 @@ class Server{
 
         this.app.use(cors());
 
-        this.app.use(function(req, res, next) {
+        //this.app.use(function(req, res, next) {
 
-           res.header({"origin": "http://localhost:4200/",
-            "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-            "preflightContinue": false,
-            "optionsSuccessStatus": 204})
+           //res.header({"origin": "http://localhost:4200/",
+          //  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+          //  "preflightContinue": false,
+           // "optionsSuccessStatus": 204})
 
 
            // res.header('Access-Control-Allow-Origin', '*');
            // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
            // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
             //res.header('Content-Type: application/json');
-            next();
-          });
+           // next();
+          //});
 
     }
 
     async dbConnection(){
         try {
-            Produto.sync();
             User.sync();
             Categoria.sync();
+            Produto.sync();
+           // Produto.sync({force:true});
+            
+            
            
             
         } catch (error) {

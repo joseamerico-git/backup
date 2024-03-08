@@ -11,8 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.newProduct = exports.getProdutos = void 0;
 const produtos_1 = require("../models/produtos");
+const categorias_1 = require("../models/categorias");
 const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const listProdutos = yield produtos_1.Produto.findAll();
+    const listProdutos = yield produtos_1.Produto.findAll({
+        order: [['id', 'DESC']],
+        include: [{
+                model: categorias_1.Categoria,
+            }]
+    });
     res.json({
         listProdutos
     });
