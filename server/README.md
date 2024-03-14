@@ -59,3 +59,10 @@ npm i --save-dev @types/cors
 npm i -g forever
 
 forever start app.js
+
+
+# Upload com multer e typescript
+
+npm install express multer --save
+
+npm install typescript @types/express @types/multer --save-dev

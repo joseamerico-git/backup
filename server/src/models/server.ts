@@ -3,10 +3,13 @@ import cors from 'cors';
 import routesProduto from '../routes/produto'
 import routesCategoria from '../routes/categoria'
 import routesUser from '../routes/user'
+import routesUpload from '../routes/upload'
 
 import { Produto } from './produtos';
 import { User } from './users';
 import { Categoria } from './categorias';
+
+
 
 
 
@@ -17,6 +20,11 @@ class Server{
 
     constructor(){
         this.app = express();
+
+       
+
+
+
         this.port = process.env.POR || '3001';
         console.log("Estou no construtor da classe Server.")
         this.listen();
@@ -37,13 +45,23 @@ class Server{
         this.app.use('/api/produtos/view',routesProduto)
         this.app.use('/api/produtos/create',routesProduto)
         this.app.use('/api/users',routesUser)
+
+        this.app.post('/', routesUpload)
+
+        this.app.get('/', (req, res) => {
+            res.send('Hello World!');
+        })
+
+      
+
     }
    
     midlewares(){
 
         // Parseo body
-
+       
         this.app.use(express.json());
+        
 
         // Cors
      //   this.app.use(function(req, res, next) {
@@ -68,6 +86,8 @@ class Server{
             //res.header('Content-Type: application/json');
            // next();
           //});
+
+          
 
     }
 
