@@ -8,10 +8,10 @@ const upload_1 = __importDefault(require("../upload"));
 const router = (0, express_1.Router)();
 router.post('/', upload_1.default.single('avatar'), (req, res) => {
     var _a;
-    const { id } = req.body;
+    const { cod } = req.body;
     console.log(req.body);
     try {
-        res.send(`Arquivo enviado com sucesso: ' + ${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename}_${id}`);
+        res.send(`Arquivo enviado com sucesso: ' + ${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename} _ ${cod}`);
     }
     catch (error) {
         console.log("erro não passou pela função");

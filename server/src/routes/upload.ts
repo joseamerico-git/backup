@@ -6,10 +6,10 @@ const router = Router();
 
 router.post('/',uploads.single('avatar'), (req, res) => {
 
-    const {id} = req.body
+    const {cod} = req.body
     console.log(req.body)
     try {
-        res.send(`Arquivo enviado com sucesso: ' + ${req.file?.filename}_${id}`);
+        res.send(`Arquivo enviado com sucesso: ' + ${req.file?.filename} _ ${cod}`);
     } catch (error) {
         console.log("erro não passou pela função")
         console.log(error);
