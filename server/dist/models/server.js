@@ -18,12 +18,19 @@ const produto_1 = __importDefault(require("../routes/produto"));
 const categoria_1 = __importDefault(require("../routes/categoria"));
 const user_1 = __importDefault(require("../routes/user"));
 const upload_1 = __importDefault(require("../routes/upload"));
+const image_1 = __importDefault(require("../routes/image"));
 const produtos_1 = require("./produtos");
 const users_1 = require("./users");
 const categorias_1 = require("./categorias");
+const imagens_1 = require("./imagens");
+const bodyParser = require("body-parser");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
+        // support parsing of application/json type post data
+        this.app.use(bodyParser.json());
+        //support parsing of application/x-www-form-urlencoded post data
+        this.app.use(bodyParser.urlencoded({ extended: true }));
         this.port = process.env.POR || '3001';
         console.log("Estou no construtor da classe Server.");
         this.listen();
@@ -42,7 +49,8 @@ class Server {
         this.app.use('/api/produtos/view', produto_1.default);
         this.app.use('/api/produtos/create', produto_1.default);
         this.app.use('/api/users', user_1.default);
-        this.app.post('/', upload_1.default);
+        this.app.use('/api/produtos/imagens', image_1.default);
+        this.app.use('/api/produtos/upload', upload_1.default);
         this.app.get('/', (req, res) => {
             res.send('Hello World!');
         });
@@ -75,6 +83,7 @@ class Server {
                 users_1.User.sync();
                 categorias_1.Categoria.sync();
                 produtos_1.Produto.sync();
+                imagens_1.Imagem.sync();
                 // Produto.sync({force:true});
             }
             catch (error) {

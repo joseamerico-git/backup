@@ -5,9 +5,11 @@
 </head>
 <body>
 
-<form class="uploadForm" action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
+<form class="uploadForm" action="http://localhost:3001/api/produtos/upload" method="post" enctype="multipart/form-data">
     <label class="control-label">Select File</label>
     <input name="avatar" id="input-1" type="file" class="file">
+    <br>
+    <input type="text" id="id" name="id">
     <input type="submit" value="submit" />
 </form>
 

@@ -3,6 +3,7 @@ import  Server from "./models/server";
 import { Router } from 'express';
 
 
+
 //Configuramos dotenv
 dotenv.config();
 

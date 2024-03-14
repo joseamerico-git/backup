@@ -66,3 +66,6 @@ forever start app.js
 npm install express multer --save
 
 npm install typescript @types/express @types/multer --save-dev
+
+
+npm install body-parser --save
