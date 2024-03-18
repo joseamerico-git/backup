@@ -12,5 +12,14 @@ const storage = multer_1.default.diskStorage({
         cb(null, file.originalname);
     }
 });
-const uploads = (0, multer_1.default)({ storage: storage });
+const uploads = (0, multer_1.default)({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const extensaoImage = ['image/jpg', 'image/jpeg', 'image/png'].find(formatoAceito => formatoAceito == file.mimetype);
+        if (extensaoImage) {
+            return cb(null, true);
+        }
+        return cb(null, false);
+    }
+});
 exports.default = uploads;

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Imagem = void 0;
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
+const produtos_1 = require("./produtos");
 exports.Imagem = connection_1.default.define('imagens', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
@@ -17,5 +18,9 @@ exports.Imagem = connection_1.default.define('imagens', {
     },
     url: {
         type: sequelize_1.DataTypes.STRING
+    },
+    productId: {
+        type: sequelize_1.DataTypes.INTEGER
     }
 });
+exports.Imagem.belongsTo(produtos_1.Produto, { foreignKey: 'productId' });

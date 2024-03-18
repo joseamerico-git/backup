@@ -20,6 +20,18 @@ export const getImagens = async (req: Request,res:Response) => {
 }
 
 
+const getImagensByProductId = async(req:Request,res:Response){
+const productId = req.params.productId
+  const listImagens = await Imagem.findAll( { where: { productId: productId }
+  
+  })
+
+  res.json({
+    listImagens
+  })
+  
+}
+
 	
 export const newImagem = async (req: Request, res: Response) => {
   console.log("chegou na rota create imagens")

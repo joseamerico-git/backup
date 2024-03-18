@@ -58,11 +58,17 @@ class Server {
     midlewares() {
         // Parseo body
         this.app.use(express_1.default.json());
+        this.app.use(function (req, res, next) {
+            res.header("Content-Type", "multipart/form-data");
+            res.header('Access-Control-Allow-Origin', '*');
+            // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            next();
+        });
         // Cors
-        //   this.app.use(function(req, res, next) {
-        //     res.header('Access-Control-Allow-Origin', '*');
-        //     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        // next();
+        // this.app.use(function(req, res, next) {
+        // res.header('Access-Control-Allow-Origin', '*');
+        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        //  next();
         //   });
         this.app.use((0, cors_1.default)());
         //this.app.use(function(req, res, next) {

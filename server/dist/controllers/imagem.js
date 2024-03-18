@@ -24,6 +24,14 @@ const getImagens = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     });
 });
 exports.getImagens = getImagens;
+const getImagensByProductId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const productId = req.params.productId;
+    const listImagens = yield imagens_1.Imagem.findAll({ where: { productId: productId }
+    });
+    res.json({
+        listImagens
+    });
+});
 const newImagem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("chegou na rota create imagens");
     const { nome, productId } = req.body;

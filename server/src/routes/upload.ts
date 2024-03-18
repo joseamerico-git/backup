@@ -1,15 +1,31 @@
 import {Router} from 'express'
     import {getUp} from '../controllers/upload'
 import uploads from '../upload';
+import { Imagem } from '../models/imagens';
    
 const router = Router();
 
-router.post('/',uploads.single('avatar'), (req, res) => {
+router.post('/',uploads.single('avatar'), async (req, res) => {
 
-    const {cod} = req.body
+    const {productId} = req.body
     console.log(req.body)
+
+    if(req.file){
+        try {
+            res.send(`Arquivo enviado com sucesso: ' + ${req.file?.filename} _ ${productId}`);
+            Imagem.create({
+                nome: `${req.file?.filename} _ ${productId}`,
+                productId:productId,
+                
+            })
+        } catch (error) {
+            console.log("erro não passou pela função")
+            console.log(error);
+        }
+    }
+   
     try {
-        res.send(`Arquivo enviado com sucesso: ' + ${req.file?.filename} _ ${cod}`);
+        res.send(`Arquivo não enviado com sucesso: `);
     } catch (error) {
         console.log("erro não passou pela função")
         console.log(error);

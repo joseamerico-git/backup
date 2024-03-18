@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize"
 import sequelize  from "../db/connection"
+import { Produto } from "./produtos"
 
 
 export const Imagem = sequelize.define('imagens',{
@@ -15,10 +16,15 @@ export const Imagem = sequelize.define('imagens',{
 
     url:{
         type: DataTypes.STRING
+    },
+    productId:{
+        type: DataTypes.INTEGER
     }
  
     
 })  
+
+Imagem.belongsTo(Produto, {foreignKey:'productId'})  
  
 
 
