@@ -17,7 +17,7 @@ const getImagens = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         order: [['id', 'DESC']],
         //include: [{
         // model: Produto,
-        // }]
+        //  }]
     });
     res.json({
         listImagens

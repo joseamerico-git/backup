@@ -10,7 +10,7 @@ export const getImagens = async (req: Request,res:Response) => {
     //include: [{
      // model: Produto,
       
-   // }]
+  //  }]
 
 
   });

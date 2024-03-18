@@ -53,7 +53,7 @@ class Server {
       
         this.app.use('/api/produtos', routesProduto)
         this.app.use('/api/users', routesUser)
-        this.app.use('/api/produtos/imagens', routesImage)
+        this.app.use('/api/imagens', routesImage)
 
         this.app.use('/api/produtos/upload', routesUpload)
 

@@ -40,7 +40,8 @@ export const getProdutoById = async (req: Request, res: Response) => {
 }
 export const newProduct = async (req: Request, res: Response) => {
   console.log("chegou na rota create product")
-  const { nome } = req.body;
+  const { nome,descricao,estoque,categoriaId} = req.body;
+ 
   console.log(req.body)
   //Validando usuário, se existe cadastrado
 
@@ -54,10 +55,17 @@ export const newProduct = async (req: Request, res: Response) => {
   }
 
 
+  const newProduct = {
+    nome:nome,
+    descricao:descricao,
+    estoque:estoque,
+    categoriaId:categoriaId
+
+  }
 
   try {
 
-    await Produto.create(req.body)
+    await Produto.create(newProduct)
 
     res.json({
       msg: `Produto ${nome} cadastrado com sucesso!`

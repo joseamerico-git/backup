@@ -41,7 +41,7 @@ const getProdutoById = (req, res) => __awaiter(void 0, void 0, void 0, function*
 exports.getProdutoById = getProdutoById;
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("chegou na rota create product");
-    const { nome } = req.body;
+    const { nome, descricao, estoque, categoriaId } = req.body;
     console.log(req.body);
     //Validando usuário, se existe cadastrado
     const prodRecuperado = yield produtos_1.Produto.findOne({ where: { nome: nome } });
@@ -51,8 +51,14 @@ const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             produto: prodRecuperado
         });
     }
+    const newProduct = {
+        nome: nome,
+        descricao: descricao,
+        estoque: estoque,
+        categoriaId: categoriaId
+    };
     try {
-        yield produtos_1.Produto.create(req.body);
+        yield produtos_1.Produto.create(newProduct);
         res.json({
             msg: `Produto ${nome} cadastrado com sucesso!`
         });

@@ -47,7 +47,7 @@ class Server {
         this.app.use('/api/categorias', categoria_1.default);
         this.app.use('/api/produtos', produto_1.default);
         this.app.use('/api/users', user_1.default);
-        this.app.use('/api/produtos/imagens', image_1.default);
+        this.app.use('/api/imagens', image_1.default);
         this.app.use('/api/produtos/upload', upload_1.default);
         this.app.get('/', (req, res) => {
             res.send('Hello World!');

@@ -17,15 +17,16 @@ const upload_1 = __importDefault(require("../upload"));
 const imagens_1 = require("../models/imagens");
 const router = (0, express_1.Router)();
 router.post('/', upload_1.default.single('avatar'), (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
+    var _a, _b, _c;
     const { productId } = req.body;
     console.log(req.body);
     if (req.file) {
         try {
-            res.send(`Arquivo enviado com sucesso: ' + ${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename} _ ${productId}`);
+            res.send(`Arquivo enviado com sucesso: ' + ${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename}_${productId}`);
             imagens_1.Imagem.create({
-                nome: `${(_b = req.file) === null || _b === void 0 ? void 0 : _b.filename} _ ${productId}`,
+                nome: `${(_b = req.file) === null || _b === void 0 ? void 0 : _b.filename}_${productId}`,
                 productId: productId,
+                url: `http://localhost:3001/api/produtos/imagens/${(_c = req.file) === null || _c === void 0 ? void 0 : _c.filename}_${productId}`
             });
         }
         catch (error) {
