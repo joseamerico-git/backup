@@ -20,8 +20,10 @@ export const getImagens = async (req: Request,res:Response) => {
 }
 
 
-const getImagensByProductId = async(req:Request,res:Response){
-const productId = req.params.productId
+export const getImagensByProductId = async (req: Request,res:Response) => {
+ 
+  const productId = req.params.productId
+  console.log("parametro"+productId)
   const listImagens = await Imagem.findAll( { where: { productId: productId }
   
   })
@@ -29,8 +31,9 @@ const productId = req.params.productId
   res.json({
     listImagens
   })
-  
 }
+
+
 
 	
 export const newImagem = async (req: Request, res: Response) => {

@@ -46,8 +46,6 @@ class Server {
     routes() {
         this.app.use('/api/categorias', categoria_1.default);
         this.app.use('/api/produtos', produto_1.default);
-        this.app.use('/api/produtos/view', produto_1.default);
-        this.app.use('/api/produtos/create', produto_1.default);
         this.app.use('/api/users', user_1.default);
         this.app.use('/api/produtos/imagens', image_1.default);
         this.app.use('/api/produtos/upload', upload_1.default);

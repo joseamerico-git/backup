@@ -69,3 +69,5 @@ npm install typescript @types/express @types/multer --save-dev
 
 
 npm install body-parser --save
+
+# create database teste character set utf8mb4 collate utf8mb4_unicode_ci

@@ -49,9 +49,9 @@ class Server {
 
     routes() {
         this.app.use('/api/categorias', routesCategoria)
+       
+      
         this.app.use('/api/produtos', routesProduto)
-        this.app.use('/api/produtos/view', routesProduto)
-        this.app.use('/api/produtos/create', routesProduto)
         this.app.use('/api/users', routesUser)
         this.app.use('/api/produtos/imagens', routesImage)
 
