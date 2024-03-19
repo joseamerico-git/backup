@@ -6,7 +6,7 @@ const router = Router();
 
 
 router.get('/',getImagens)
-router.get('/:productId',getImagensByProductId) //pega imagens, pelo id do produto
+//router.get('/:productId',getImagensByProductId) //pega imagens, pelo id do produto
 
 router.post('/',newImagem)
 

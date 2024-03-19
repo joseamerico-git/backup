@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Page Title</title>
 </head>
 
@@ -21,7 +22,7 @@
     <br />
 
     <ul id="list">
-       
+
 
     </ul>
 
@@ -29,22 +30,57 @@
 
         const ul = document.getElementById('list')
         const imgProduct = document.getElementById("imgProduct")
-
-        fetch('http://localhost:3001/api/imagens').then(response =>
-          // adicionaImagem(response.url)
-          console.log(response)
-          
-          
-        );
+        let imagens = [];
 
 
-       function adicionaImagem(url){
-        const li = document.createElement("list");
-        const tagImg = document.createElement("img");
-        li.appendChild(tagImg);
-        tagImg.src = url
-        document.getElementById("list").appendChild(li);
-       }
+
+
+        async function getImagens() {
+
+
+            try {
+                const response = await axios.get('http://localhost:3001/api/imagens');
+                response.data.listImagens
+
+
+                response.data.map(item => {
+                    url = item.url;
+                    
+                    
+                });
+
+                imagens.push({url});
+
+                var contact = JSON.parse(response.data.listImagens);
+                console.log(contact);
+
+
+            } catch (error) {
+                console.error(error);
+            }
+
+
+
+
+
+
+        }
+
+        getImagens();
+
+        imagens.forEach(element => {
+            console.log(element)
+        });
+
+
+
+        function adicionaImagem(url) {
+            const li = document.createElement("list");
+            const tagImg = document.createElement("img");
+            li.appendChild(tagImg);
+            tagImg.src = url
+            document.getElementById("list").appendChild(li);
+        }
 
     </script>
 
