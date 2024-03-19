@@ -24,9 +24,9 @@ router.post('/', upload_1.default.single('avatar'), (req, res) => __awaiter(void
         try {
             res.send(`Arquivo enviado com sucesso: ' + ${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename}_${productId}`);
             imagens_1.Imagem.create({
-                nome: `${(_b = req.file) === null || _b === void 0 ? void 0 : _b.filename}_${productId}`,
+                nome: `${(_b = req.file) === null || _b === void 0 ? void 0 : _b.filename}`,
                 productId: productId,
-                url: `http://localhost:3001/api/produtos/imagens/${(_c = req.file) === null || _c === void 0 ? void 0 : _c.filename}_${productId}`
+                url: `http://localhost:3001/api/produtos/imagens/${(_c = req.file) === null || _c === void 0 ? void 0 : _c.filename}`
             });
         }
         catch (error) {

@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const {productId} = req.body
-    cb(null, `${file.originalname}_${productId}`);
+    cb(null, `${file.originalname}`);
   }
 })
 

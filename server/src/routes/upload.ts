@@ -14,9 +14,9 @@ router.post('/',uploads.single('avatar'), async (req, res) => {
         try {
             res.send(`Arquivo enviado com sucesso: ' + ${req.file?.filename}_${productId}`);
             Imagem.create({
-                nome: `${req.file?.filename}_${productId}`,
+                nome: `${req.file?.filename}`,
                 productId:productId,
-                url:`http://localhost:3001/api/produtos/imagens/${req.file?.filename}_${productId}`
+                url:`http://localhost:3001/api/produtos/imagens/${req.file?.filename}`
                 
             })
         } catch (error) {

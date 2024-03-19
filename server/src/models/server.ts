@@ -67,42 +67,24 @@ class Server {
 
     midlewares() {
 
-        // Parseo body
+
 
         this.app.use(express.json());
-
-        this.app.use(function(req, res, next) {
-            
-            res.header("Content-Type", "multipart/form-data");
-            res.header('Access-Control-Allow-Origin', '*');
-           // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-        });
-
-        // Cors
-          // this.app.use(function(req, res, next) {
-           // res.header('Access-Control-Allow-Origin', '*');
-           // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-           
-       //  next();
-        //   });
-
+      
         this.app.use(cors());
+       // this.app.use(function(req, res, next) {
+         //   res.header('Access-Control-Allow-Origin', '*');
+         //   res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE");
+          //  res.header("Content-Type", "multipart/form-data");
+          //  res.header("Access-control-Allow-Headers" , "X-PNGOTHER, Content-Type, Authorization");
+                    
+          //  res.header('Content-Type: application/json');
 
-        //this.app.use(function(req, res, next) {
-
-        //res.header({"origin": "http://localhost:4200/",
-        //  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-        //  "preflightContinue": false,
-        // "optionsSuccessStatus": 204})
-
-
-        // res.header('Access-Control-Allow-Origin', '*');
-        // res.  header("Access-Control-Allow-Methods: PUT, GET, POST");
-        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type  application/json, Accept');
-        //res.header('Content-Type: application/json');
-        // next();
-        //});
+                      // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+          //  next();
+            
+      //  });
+       
 
 
 

@@ -10,7 +10,7 @@ const storage = multer_1.default.diskStorage({
     },
     filename: function (req, file, cb) {
         const { productId } = req.body;
-        cb(null, `${file.originalname}_${productId}`);
+        cb(null, `${file.originalname}`);
     }
 });
 const uploads = (0, multer_1.default)({
