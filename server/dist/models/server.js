@@ -55,16 +55,15 @@ class Server {
     }
     midlewares() {
         this.app.use(express_1.default.json());
+        this.app.use('/files', express_1.default.static('public'));
+        //this.app.use('/files', express.static(path.resolve(__dirname, 'public')))
+        this.app.use(function (req, res, next) {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE");
+            res.header("Access-control-Allow-Headers", "X-PNGOTHER, Content-Type, Authorization");
+            next();
+        });
         this.app.use((0, cors_1.default)());
-        // this.app.use(function(req, res, next) {
-        //   res.header('Access-Control-Allow-Origin', '*');
-        //   res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE");
-        //  res.header("Content-Type", "multipart/form-data");
-        //  res.header("Access-control-Allow-Headers" , "X-PNGOTHER, Content-Type, Authorization");
-        //  res.header('Content-Type: application/json');
-        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        //  next();
-        //  });
     }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {

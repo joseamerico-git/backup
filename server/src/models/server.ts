@@ -12,6 +12,7 @@ import { Categoria } from './categorias';
 import { Imagem } from './imagens';
 
 import bodyParser = require('body-parser');
+import path from 'node:path';
 
 
 
@@ -21,10 +22,10 @@ class Server {
     private app: Application;
     private port: string;
 
-
+   
     constructor() {
         this.app = express();
-
+      
 
         // support parsing of application/json type post data
         this.app.use(bodyParser.json());
@@ -48,9 +49,11 @@ class Server {
     }
 
     routes() {
+
+   
         this.app.use('/api/categorias', routesCategoria)
        
-      
+        
         this.app.use('/api/produtos', routesProduto)
         this.app.use('/api/users', routesUser)
         this.app.use('/api/imagens', routesImage)
@@ -60,7 +63,7 @@ class Server {
         this.app.get('/', (req, res) => {
             res.send('Hello World!');
         })
-
+       
 
 
     }
@@ -70,20 +73,20 @@ class Server {
 
 
         this.app.use(express.json());
-      
-        this.app.use(cors());
-       // this.app.use(function(req, res, next) {
-         //   res.header('Access-Control-Allow-Origin', '*');
-         //   res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE");
-          //  res.header("Content-Type", "multipart/form-data");
-          //  res.header("Access-control-Allow-Headers" , "X-PNGOTHER, Content-Type, Authorization");
-                    
-          //  res.header('Content-Type: application/json');
 
-                      // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-          //  next();
+        this.app.use('/files', express.static('public'))
+        //this.app.use('/files', express.static(path.resolve(__dirname, 'public')))
+      
+        this.app.use(function(req, res, next) {
+           res.header('Access-Control-Allow-Origin', '*');
+            res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE");
+            res.header("Access-control-Allow-Headers" , "X-PNGOTHER, Content-Type, Authorization");
+          
+            next();
             
-      //  });
+       });
+
+       this.app.use(cors())
        
 
 
