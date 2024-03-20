@@ -33,43 +33,35 @@
         let imagens = [];
 
 
+        const url = "http://localhost:3001/files/"
 
 
-        async function getImagens() {
+
+        axios.get('http://localhost:3001/api/imagens').then(response => {
+            this.data = response.data
+            var url = data.listImagens
+            console.log(url)
 
 
-            try {
-                const response = await axios.get('http://localhost:3001/api/imagens');
-                response.data.listImagens
-
-
-                response.data.map(item => {
-                    url = item.url;
-                    
-                    
-                });
-
-                imagens.push({url});
-
-                var contact = JSON.parse(response.data.listImagens);
-                console.log(contact);
-
-
-            } catch (error) {
-                console.error(error);
-            }
+        })
 
 
 
 
-
-
+        const allData = async () => {
+            const response = await axios.get('http://localhost:3001/api/imagens');
+            return response.data.listImagens; // retorna apenas o array de Json
         }
 
-        getImagens();
-
-        imagens.forEach(element => {
-            console.log(element)
+        // para utilizar o resultado da Promise, é possível fazer o seguinte:
+        allData().then((data) => {
+            // aqui dentro, a variável 'data' contém o array de Json retornado pela Promise
+            const url = null;
+            data.forEach((imagem) => {
+                  adicionaImagem(`http://localhost:3001/files/${imagem.nome}`)
+            });
+        }).catch((error) => {
+            console.log(error);
         });
 
 
@@ -81,6 +73,9 @@
             tagImg.src = url
             document.getElementById("list").appendChild(li);
         }
+
+
+
 
     </script>
 

@@ -71,3 +71,23 @@ npm install typescript @types/express @types/multer --save-dev
 npm install body-parser --save
 
 # create database teste character set utf8mb4 collate utf8mb4_unicode_ci
+
+
+
+remover o node do ubuntu 
+
+
+sudo apt-get remove nodejs
+
+sudo apt-get remove --purge nodejs
+
+
+sudo rm -rf /usr/local/bin/node
+sudo rm -rf /usr/local/lib/node_modules/npm
+
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_cd ~
+curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh -o nodesource_setup.sh
+
+sudo apt-get install build-essential
