@@ -28,23 +28,11 @@
 
     <script>
 
-        const ul = document.getElementById('list')
-        const imgProduct = document.getElementById("imgProduct")
-        let imagens = [];
+       
+        
+        
 
-
-        const url = "http://localhost:3001/files/"
-
-
-
-        axios.get('http://localhost:3001/api/imagens').then(response => {
-            this.data = response.data
-            var url = data.listImagens
-            console.log(url)
-
-
-        })
-
+   
 
 
 
@@ -58,6 +46,7 @@
             // aqui dentro, a variável 'data' contém o array de Json retornado pela Promise
             const url = null;
             data.forEach((imagem) => {
+                  console.log(imagem)
                   adicionaImagem(`http://localhost:3001/files/${imagem.nome}`)
             });
         }).catch((error) => {
@@ -67,10 +56,17 @@
 
 
         function adicionaImagem(url) {
+            const body = document.getElementsByTagName("body")
+            body.style ="background-color: antiquewhite"
             const li = document.createElement("list");
             const tagImg = document.createElement("img");
-            li.appendChild(tagImg);
-            tagImg.src = url
+            const div = document.createElement("div");
+            div.style = "width:150px; height:150px; padding:1rem;";
+            div.appendChild(tagImg);
+            tagImg.style = "width:100%;";
+            li.style = "display:flex; flex-direction:row;";
+            li.appendChild(div);
+            tagImg.src = url;
             document.getElementById("list").appendChild(li);
         }
 
