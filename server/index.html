@@ -2,24 +2,57 @@
 <html>
 
 <head>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <link rel="stylesheet" href="style.css">
     <title>Page Title</title>
 </head>
 
 <body>
 
-    <form class="uploadForm" action="http://localhost:3001/api/produtos/upload" method="post"
-        enctype="multipart/form-data">
-        <label class="control-label">Select File</label>
-        <input name="avatar" id="input-1" type="file" class="file">
-        <br>
-        <input type="text" id="cod" name="cod">
+    <div class="container">
+        
 
-        <input type="submit" value="submit" />
-    </form>
+        <div class="__findProduct">
+            <label for="productId">Buscar imagens de produtos</label>
+            
+            <input type="text" id="productId">
 
-    <br />
-    <br />
+            <button id="btnPesquisar">Pesquisar</button>
+
+        </div>
+
+        <hr />
+
+        <div class="__form__imput">
+            <form class="uploadForm" action="http://localhost:3001/api/produtos/upload" method="post"
+                enctype="multipart/form-data">
+                <label class="control-label">Select File</label>
+                <input name="avatar" id="input-1" type="file" class="file">
+                <br>
+                <input type="text" id="cod" name="cod">
+
+                <input type="submit" value="submit" />
+            </form>
+
+         
+        
+            
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    
+
+
 
     <ul id="list">
 
@@ -28,11 +61,11 @@
 
     <script>
 
-       
-        
-        
 
-   
+        const productId = "";
+
+
+
 
 
 
@@ -46,8 +79,8 @@
             // aqui dentro, a variável 'data' contém o array de Json retornado pela Promise
             const url = null;
             data.forEach((imagem) => {
-                  console.log(imagem)
-                  adicionaImagem(`http://localhost:3001/files/${imagem.nome}`)
+                console.log(imagem)
+                adicionaImagem(`http://localhost:3001/files/${imagem.nome}`)
             });
         }).catch((error) => {
             console.log(error);
@@ -57,7 +90,7 @@
 
         function adicionaImagem(url) {
             const body = document.getElementsByTagName("body")
-            body.style ="background-color: antiquewhite"
+            body.style = "background-color: antiquewhite"
             const li = document.createElement("list");
             const tagImg = document.createElement("img");
             const div = document.createElement("div");
