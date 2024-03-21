@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.newImagem = exports.getImagensByProductId = exports.getImagens = void 0;
+exports.newImagem = exports.findAllImageProductId = exports.findImagemByProdutctById = exports.getImagens = void 0;
 const imagens_1 = require("../models/imagens");
 const produtos_1 = require("../models/produtos");
 const getImagens = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,16 +24,25 @@ const getImagens = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     });
 });
 exports.getImagens = getImagens;
-const getImagensByProductId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const findImagemByProdutctById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const productId = req.params.productId;
-    console.log("parametro" + productId);
-    const listImagens = yield imagens_1.Imagem.findAll({ where: { productId: productId }
+    imagens_1.Imagem.findOne({ where: { productId: productId } }).then((result) => res.json(result));
+});
+exports.findImagemByProdutctById = findImagemByProdutctById;
+const findAllImageProductId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const productId = req.params.productId;
+    const listImagens = yield imagens_1.Imagem.findAll({
+        where: { productId: productId },
+        order: [['id', 'DESC']],
+        include: [{
+                model: produtos_1.Produto,
+            }]
     });
     res.json({
         listImagens
     });
 });
-exports.getImagensByProductId = getImagensByProductId;
+exports.findAllImageProductId = findAllImageProductId;
 const newImagem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("chegou na rota create imagens");
     const { nome, productId } = req.body;

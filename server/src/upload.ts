@@ -20,7 +20,7 @@ const uploads = multer({
   storage: storage, 
   
   fileFilter: (req, file, cb) => {
-    const extensaoImage = ['image/jpg', 'image/jpeg', 'image/png'].find(formatoAceito => formatoAceito == file.mimetype);
+    const extensaoImage = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'].find(formatoAceito => formatoAceito == file.mimetype);
     
     if (extensaoImage) {
      return cb(null, true)

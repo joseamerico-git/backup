@@ -9,8 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.newCategoria = exports.getCategorias = void 0;
+exports.deleteCategoria = exports.updateCategoria = exports.newCategoria = exports.getCategorias = exports.findCategoriaById = void 0;
 const categorias_1 = require("../models/categorias");
+const findCategoriaById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    categorias_1.Categoria.findByPk(req.params.id).then((result) => res.json(result));
+});
+exports.findCategoriaById = findCategoriaById;
 const getCategorias = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const listCategorias = yield categorias_1.Categoria.findAll();
     res.json({
@@ -41,3 +45,31 @@ const newCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.newCategoria = newCategoria;
+const updateCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { descricao } = req.body;
+    yield categorias_1.Categoria.update({
+        descricao: descricao,
+    }, {
+        where: {
+            id: req.params.id,
+        },
+    });
+    categorias_1.Categoria.findByPk(req.params.id).then((result) => res.json(result));
+});
+exports.updateCategoria = updateCategoria;
+const deleteCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const categoriaRecuperada = yield categorias_1.Categoria.findOne({ where: { id: id } });
+    if (!categoriaRecuperada) {
+        res.json({
+            msg: `Categoria id: ${id} não encontrada!`,
+            categoriaRecuperada: categoriaRecuperada
+        });
+    }
+    categorias_1.Categoria.destroy({
+        where: {
+            id: id
+        }
+    });
+});
+exports.deleteCategoria = deleteCategoria;

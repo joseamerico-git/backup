@@ -20,24 +20,10 @@ export const getProdutos = async (req: Request, res: Response) => {
 }
 
 
-export const getProdutoById = async (req: Request, res: Response) => {
-  const id = req.params.id
-  const prodRecuperado = await Produto.findOne({ where: { id: id } })
-
-  if (!prodRecuperado) {
-    return res.status(400).json({
-      msg: `Produto com o id:  ${id} não encontrado`,
-      produto: prodRecuperado
-    })
-  }
-
-  return res.status(200).json({
-    msg: `Produto id: ${id}, encontrado!`,
-    produto: prodRecuperado
-  })
-
-
+export const  findProdutoById = async(req:Request, res:Response) => {
+  Categoria.findByPk(req.params.id).then((result) => res.json(result));
 }
+
 export const newProduct = async (req: Request, res: Response) => {
   console.log("chegou na rota create product")
   const { nome,descricao,estoque,categoriaId} = req.body;

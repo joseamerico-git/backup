@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateProduct = exports.newProduct = exports.getProdutoById = exports.getProdutos = void 0;
+exports.updateProduct = exports.newProduct = exports.findProdutoById = exports.getProdutos = void 0;
 const produtos_1 = require("../models/produtos");
 const categorias_1 = require("../models/categorias");
 const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,21 +24,10 @@ const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     });
 });
 exports.getProdutos = getProdutos;
-const getProdutoById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.params.id;
-    const prodRecuperado = yield produtos_1.Produto.findOne({ where: { id: id } });
-    if (!prodRecuperado) {
-        return res.status(400).json({
-            msg: `Produto com o id:  ${id} não encontrado`,
-            produto: prodRecuperado
-        });
-    }
-    return res.status(200).json({
-        msg: `Produto id: ${id}, encontrado!`,
-        produto: prodRecuperado
-    });
+const findProdutoById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    categorias_1.Categoria.findByPk(req.params.id).then((result) => res.json(result));
 });
-exports.getProdutoById = getProdutoById;
+exports.findProdutoById = findProdutoById;
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("chegou na rota create product");
     const { nome, descricao, estoque, categoriaId } = req.body;
