@@ -5,6 +5,22 @@ body{
  background: linear-gradient(rgba(255, 255, 255, 0.25) 0px, transparent 10px);
  background-color: #8a2be24a
 }
+
+@media only screen and (max-width: 600px) {
+    .__findProduct{
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);
+
+    }
+    }
+
+    @media only screen and (min-width: 367px) {
+        .__findProduct{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+    
+        }
+        }
 .container{
     display: flex;
     flex-direction: column;
@@ -14,21 +30,22 @@ body{
 
 .__findProduct{
     position: relative;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
     color: rgb(245, 247, 245);
     background-color: rgb(138 138 138 / 13%);
     font-size: large;
     border-radius: 3px;
-    display: flex;
-    padding-top: 20px;
+    
+    padding: 20px;
     justify-content: center;
     margin: 10px auto;
 
 }
 
 .div_img{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .div_img > img {
