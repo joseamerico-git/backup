@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { Produto } from '../models/produtos';
 import { Categoria } from '../models/categorias';
+import { Imagem } from '../models/imagens';
 
 export const getProdutos = async (req: Request, res: Response) => {
 
@@ -8,9 +9,15 @@ export const getProdutos = async (req: Request, res: Response) => {
     order: [['id', 'DESC']],
 
     include: [{
-      model: Categoria,
+      model:Categoria
 
-    }]
+    },
+    {
+      model:Imagem
+    }
+  
+  
+  ]
 
 
   });

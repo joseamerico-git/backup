@@ -82,25 +82,38 @@
 
 
         const productId = "";
-
+        let listImagens =[]
 
 
 
 
 
         const allData = async () => {
-            const response = await axios.get('http://localhost:3001/api/imagens');
-            return response.data.listImagens; // retorna apenas o array de Json
+            const response = await axios.get('http://localhost:3001/api/produtos');
+            return response.data; // retorna apenas o array de Json
         }
 
         // para utilizar o resultado da Promise, é possível fazer o seguinte:
         allData().then((data) => {
             // aqui dentro, a variável 'data' contém o array de Json retornado pela Promise
+            console.log(data.listProdutos)
+           // console.log(data.listProdutos[0].imagens[0].nome)
             const url = null;
-            data.forEach((imagem) => {
-                console.log(imagem)
-                adicionaImagem(`http://localhost:3001/files/${imagem.nome}`)
+            data.listProdutos.forEach((produto) => {
+
+                console.log(produto.imagens)
+                listImagens
+                = produto.imagens;
+
+                listImagens.forEach((imagem)=>{
+                        console.log(imagem.nome)
+                        adicionaImagem(imagem.url)
+                });
+               
+                //adicionaImagem(`http://localhost:3001/files/${produto.nome}`)
             });
+
+
         }).catch((error) => {
             console.log(error);
         });

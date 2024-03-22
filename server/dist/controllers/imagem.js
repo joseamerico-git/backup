@@ -15,9 +15,6 @@ const produtos_1 = require("../models/produtos");
 const getImagens = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const listImagens = yield imagens_1.Imagem.findAll({
         order: [['id', 'DESC']],
-        include: [{
-                model: produtos_1.Produto,
-            }]
     });
     res.json({
         listImagens

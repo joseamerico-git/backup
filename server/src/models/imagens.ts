@@ -23,8 +23,10 @@ export const Imagem = sequelize.define('imagens',{
  
     
 })  
+Imagem.belongsTo(Imagem, { foreignKey: "productId" });
 
-Imagem.belongsTo(Produto, {foreignKey:'productId'})  
+//Imagem.belongsTo(Produto, {foreignKey:'productId'})
+
  
 
 

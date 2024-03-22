@@ -7,10 +7,7 @@ export const getImagens = async (req: Request, res: Response) => {
   const listImagens = await Imagem.findAll({
     order: [['id', 'DESC']],
 
-    include: [{
-      model: Produto,
-
-    }]
+   
 
 
   });

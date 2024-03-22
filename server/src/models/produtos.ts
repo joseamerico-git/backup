@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize"
 import sequelize  from "../db/connection"
 import { Categoria } from "./categorias"
+import { Imagem } from "./imagens"
 
 export const Produto = sequelize.define('produto',{
     id:{
@@ -35,6 +36,18 @@ export const Produto = sequelize.define('produto',{
  
     
 })  
-Produto.belongsTo(Categoria, {foreignKey:'categoriaId'})   
+Produto.belongsTo(Categoria, {foreignKey:'categoriaId'}) 
+
+//Produto.hasMany(Imagem,{as : 'imagens', foreignKey : 'idFood'})  
+//Imagem.belongsTo(Produto, {foreignKey : 'id'});
+//Produto.belongsTo(Imagem, {foreignKey : 'id'});
+//db.meal.belongsTo(db.food, {foreignKey : 'idFood'});
 
 
+
+
+  Produto.hasMany(Imagem, {
+    foreignKey: "productId",
+   // onDelete: "cascade",
+  });
+ 

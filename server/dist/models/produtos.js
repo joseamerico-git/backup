@@ -7,6 +7,7 @@ exports.Produto = void 0;
 const sequelize_1 = require("sequelize");
 const connection_1 = __importDefault(require("../db/connection"));
 const categorias_1 = require("./categorias");
+const imagens_1 = require("./imagens");
 exports.Produto = connection_1.default.define('produto', {
     id: {
         type: sequelize_1.DataTypes.INTEGER,
@@ -31,3 +32,11 @@ exports.Produto = connection_1.default.define('produto', {
     },
 });
 exports.Produto.belongsTo(categorias_1.Categoria, { foreignKey: 'categoriaId' });
+//Produto.hasMany(Imagem,{as : 'imagens', foreignKey : 'idFood'})  
+//Imagem.belongsTo(Produto, {foreignKey : 'id'});
+//Produto.belongsTo(Imagem, {foreignKey : 'id'});
+//db.meal.belongsTo(db.food, {foreignKey : 'idFood'});
+exports.Produto.hasMany(imagens_1.Imagem, {
+    foreignKey: "productId",
+    // onDelete: "cascade",
+});
