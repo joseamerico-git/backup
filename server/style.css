@@ -13,14 +13,26 @@ body{
 }
 
 .__findProduct{
+    position: relative;
     padding: 1rem;
     color: rgb(245, 247, 245);
     background-color: rgb(138 138 138 / 13%);
     font-size: large;
     border-radius: 3px;
     display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    margin: 10px auto;
 
+}
 
+.div_img{
+    width: 20px;
+    height: 20px;
+}
+
+.div_img > img {
+    width: 100%;
 }
 
 .__findProduct > input{
@@ -60,4 +72,9 @@ body{
     background-color:#b696e154;
     align-items: center;
     width: 300px;
+}
+.__prods{
+
+    width:150px; height:150px; padding:1rem;
+
 }
