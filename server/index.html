@@ -1,84 +1,61 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+    <head>
 
+        <script
+            src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>kamaleoa Store</title>
+    </head>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>kamaleoa Store</title>
-</head>
+    <body>
 
-<body>
-  
-    <div class="container">
-        <div class="barra_superior">
-            <h1>Kamaleoa Store</h1>
-            <div class="div_img"><img src="kamaleoa.png" alt="Kamaleoa Store"></div>
-        </div>
-      
-        <div class="__findProduct">
+        <div class="container">
+            <div class="barra_superior">
+                <h1>Kamaleoa Store</h1>
+                <div class="div_img"><img src="kamaleoa.png"
+                        alt="Kamaleoa Store"></div>
+            </div>
 
-           
-          
-            <div> <label for="productId">Buscar imagens de produtos</label></div>
+            <div class="__findProduct">
 
-            <div><input type="text" id="productId"></div>
+                <div> <label for="productId">Buscar imagens de
+                        produtos</label></div>
 
-           <div> <button id="btnPesquisar">Pesquisar</button></div>
+                <div><input type="text" id="productId"></div>
 
-           
-
-        </div>
-
-        <hr />
-
-        <div class="__form__imput">
-            <form class="uploadForm" action="http://localhost:3001/api/produtos/upload" method="post"
-                enctype="multipart/form-data">
-                <label class="control-label">Select File</label>
-                <input name="avatar" id="input-1" type="file" class="file">
-                <br>
-                <input type="text" id="cod" name="cod">
-
-                <input type="submit" value="submit" />
-            </form>
-
-
-
-            <div class="conainer_produtos">
-                <ul id="list">
-                   
-
-                </ul>
+                <div> <button id="btnPesquisar">Pesquisar</button></div>
 
             </div>
-            
-              
 
-         
+            <hr />
 
+            <div class="__form__imput">
+                <form class="uploadForm"
+                    action="http://localhost:3001/api/produtos/upload"
+                    method="post"
+                    enctype="multipart/form-data">
+                    <label class="control-label">Select File</label>
+                    <input name="avatar" id="input-1" type="file" class="file">
+                    <br>
+                    <input type="text" id="productId" name="productId">
 
+                    <input type="submit" value="submit" />
+                </form>
 
+                <div class="conainer_produtos">
+                    <ul id="list">
 
+                    </ul>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <script>
+        <script>
 
 
         const productId = "";
@@ -101,13 +78,13 @@
             const url = null;
             data.listProdutos.forEach((produto) => {
 
-                console.log(produto.imagens)
+                
                 listImagens
                 = produto.imagens;
 
                 listImagens.forEach((imagem)=>{
-                        console.log(imagem.nome)
-                        adicionaImagem(imagem.url)
+                       
+                        adicionaImagem(imagem.url,produto)
                 });
                
                 //adicionaImagem(`http://localhost:3001/files/${produto.nome}`)
@@ -120,7 +97,7 @@
 
 
 
-        function adicionaImagem(url) {
+        function adicionaImagem(url,produto) {
             const body = document.getElementsByTagName("body")
             const li = document.createElement("list");
             const tagImg = document.createElement("img");
@@ -150,6 +127,6 @@
 
     </script>
 
-</body>
+    </body>
 
 </html>
