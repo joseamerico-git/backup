@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>kamaleoa Store</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="barra_superior">
+                <h1>Kamaleoa Store</h1>
+                <div class="div_img"><img src="kamaleoa.png"
+                        alt="Kamaleoa Store"></div>
+            </div>
+
+            <div class="__findProduct">
+
+                <div> <label for="productId">Buscar imagens de
+                        produtos</label></div>
+
+                <div><input type="text" id="productId"></div>
+
+                <div> <button id="btnPesquisar">Pesquisar</button></div>
+
+            </div>
+
+            <hr />
+
+            <div class="__form__imput">
+                <form class="uploadForm"
+                    action="http://localhost:3001/api/produtos/upload"
+                    method="post"
+                    enctype="multipart/form-data">
+                    <label class="control-label">Select File</label>
+                    <input name="avatar" id="input-1" type="file" class="file">
+                    <br>
+                    <input type="text" id="productId" name="productId">
+
+                    <input type="submit" value="submit" />
+                </form>
+
+                <div class="conainer_produtos">
+                    <ul id="list">
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+
+
+        const productId = "";
+        let listImagens =[]
+
+
+
+
+
+        const allData = async () => {
+            const response = await axios.get('http://localhost:3001/api/produtos');
+            return response.data; // retorna apenas o array de Json
+        }
+
+        // para utilizar o resultado da Promise, é possível fazer o seguinte:
+        allData().then((data) => {
+            // aqui dentro, a variável 'data' contém o array de Json retornado pela Promise
+            console.log(data.listProdutos)
+           // console.log(data.listProdutos[0].imagens[0].nome)
+            const url = null;
+            data.listProdutos.forEach((produto) => {
+
+                
+                listImagens
+                = produto.imagens;
+
+                listImagens.forEach((imagem)=>{
+                       
+                        adicionaImagem(imagem.url,produto)
+                });
+               
+                //adicionaImagem(`http://localhost:3001/files/${produto.nome}`)
+            });
+
+
+        }).catch((error) => {
+            console.log(error);
+        });
+
+
+
+        function adicionaImagem(url,produto) {
+            const body = document.getElementsByTagName("body")
+            const li = document.createElement("list");
+            const tagImg = document.createElement("img");
+            const div = document.createElement("div");
+            
+            body.style = "background-color: antiquewhite";
+            const p = document.createElement("p");
+            const h1 = document.createElement("h1");
+          //  p.innerText("Descricao do produto")
+           // h1.innerText("Produto")
+           
+            div.style = "width:150px; height:150px; padding:1rem;";
+
+            //div.appendChild(h1)
+           // div.appendChild(p)
+            div.appendChild(tagImg);
+            tagImg.style = "width:100%;";
+            li.style = "display:flex; flex-direction:row;";
+            li.appendChild(div);
+            tagImg.src = url;
+            document.getElementById("list").appendChild(li);
+            
+        }
+
+
+
+
+    </script>
+
+    </body>
+
+</html>

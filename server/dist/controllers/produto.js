@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateProduct = exports.newProduct = exports.findProdutoById = exports.getProdutos = void 0;
+exports.updateProduct = exports.newProduct = exports.findProdutoById = exports.getProdutosCategoria = exports.getProdutos = void 0;
 const produtos_1 = require("../models/produtos");
 const categorias_1 = require("../models/categorias");
 const imagens_1 = require("../models/imagens");
@@ -29,8 +29,26 @@ const getProdutos = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     });
 });
 exports.getProdutos = getProdutos;
+const getProdutosCategoria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const categoriaId = req.params.categoriaId;
+    const listProdutos = yield produtos_1.Produto.findAll({
+        where: { categoriaId: categoriaId },
+        order: [['id', 'DESC']],
+        include: [{
+                model: categorias_1.Categoria
+            },
+            {
+                model: imagens_1.Imagem
+            }
+        ]
+    });
+    res.json({
+        listProdutos
+    });
+});
+exports.getProdutosCategoria = getProdutosCategoria;
 const findProdutoById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    categorias_1.Categoria.findByPk(req.params.id).then((result) => res.json(result));
+    produtos_1.Produto.findByPk(req.params.id).then((result) => res.json(result));
 });
 exports.findProdutoById = findProdutoById;
 const newProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

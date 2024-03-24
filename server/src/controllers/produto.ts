@@ -3,9 +3,40 @@ import { Produto } from '../models/produtos';
 import { Categoria } from '../models/categorias';
 import { Imagem } from '../models/imagens';
 
+
+
 export const getProdutos = async (req: Request, res: Response) => {
 
   const listProdutos = await Produto.findAll({
+    
+    order: [['id', 'DESC']],
+
+    include: [{
+      model:Categoria
+
+    },
+    {
+      model:Imagem
+    }
+  
+  
+  ]
+
+
+  });
+  res.json({
+    listProdutos
+  })
+}
+
+
+
+
+export const getProdutosCategoria = async (req: Request, res: Response) => {
+   const categoriaId = req.params.categoriaId;
+  const listProdutos = await Produto.findAll({
+    
+    where: { categoriaId: categoriaId },
     order: [['id', 'DESC']],
 
     include: [{
@@ -28,7 +59,7 @@ export const getProdutos = async (req: Request, res: Response) => {
 
 
 export const  findProdutoById = async(req:Request, res:Response) => {
-  Categoria.findByPk(req.params.id).then((result) => res.json(result));
+  Produto.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 export const newProduct = async (req: Request, res: Response) => {
