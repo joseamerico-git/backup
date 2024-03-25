@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de Produtos</h1>
+
+    <form class="cadProduto"action="http://localhost:3001/api/produtos" method="post">
+
+        <input type="hidden" name="token" id="token" value="" />
+      
+        <label for="nome">Nome</label><br/>
+        <input type="text" name="nome" id="nome"> <br/>
+
+        <label for="descricao">Descrição</label><br/>
+        <input type="text" name="descricao" id="descricao"> <br/>
+
+        <label for="estoque">Qtd/Estoque</label><br/>
+        <input type="text" name="estoque" id="estoque"> <br/>
+
+        <label class="control-label">Select File</label>
+        <input name="avatar" id="input-1" type="file" class="file">
+
+
+        <br>
+
+        <div class="preview">
+
+        </div>
+
+        <input type="submit" value = "Salvar">
+
+
+    </form>
+    
+</body>
+</html>
