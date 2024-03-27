@@ -7,7 +7,7 @@ const router = Router();
 router.get('/',getProdutos)
 router.get('/cat/:categoriaId',getProdutosCategoria)
 router.get('/:id',findProdutoById)
-router.post('/',validateToken,newProduct)
+router.post('/',newProduct)
 router.put('/:id',validateToken,updateProduct)
 
 

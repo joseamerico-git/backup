@@ -2,6 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -24,6 +26,13 @@
         <label class="control-label">Select File</label>
         <input name="avatar" id="input-1" type="file" class="file">
 
+        <select name="select_categorias" id="select_categorias" onchange="selecionandoCategorias()">
+
+            <option value="todos">Todos</option>
+           
+
+        </select>
+
 
         <br>
 
@@ -32,7 +41,9 @@
         </div>
 
         <input type="submit" value = "Salvar">
-
+       
+       <script src="main.js">
+        </script>
 
     </form>
     

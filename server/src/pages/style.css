@@ -1,0 +1,115 @@
+*{margin:0; padding: 0;box-sizing: border-box;}
+
+body{
+ width: 100vw;
+ background: linear-gradient(rgba(255, 255, 255, 0.25) 0px, transparent 10px);
+ background-color: #8a2be24a
+}
+
+@media only screen and (max-width: 300px) {
+    .__findProduct{
+        display: grid;
+        grid-template-columns: repeat(3, 3fr);
+
+    }
+    }
+
+    @media only screen and (min-width: 367px) {
+        .__findProduct{
+            display: grid;
+            grid-template-columns: repeat(2, 2fr);
+    
+        }
+        }
+.container{
+    display: flex;
+    flex-direction: column;
+  
+    
+}
+
+.__findProduct{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    color: rgb(245, 247, 245);
+    background-color: rgb(138 138 138 / 13%);
+    font-size: large;
+    border-radius: 3px;
+    
+    padding: 20px;
+    justify-content: center;
+    margin: 10px auto;
+
+}
+
+.div_img{
+    width: 30px;
+    height: 30px;
+}
+
+.div_img > img {
+    width: 100%;
+}
+
+.__findProduct > input{
+    border-radius:3px;
+
+}
+
+.__findProduct > button{
+    border-radius:3px;
+
+}
+
+.__form__imput{
+
+    display: flex;
+    flex-direction: column;
+    object-fit: cover;
+    align-items: center;
+
+
+}
+
+
+.__form__imput > form {
+    display: flex;
+    flex-direction: column;
+    background-color: #b696e154;
+     
+    padding: 1rem;
+    border-radius: 3px;
+    box-shadow: inset 0px 10px 26px 8px rgba(0,0,0,0.1);
+}
+
+.__ul > ul{
+    flex-direction: column;
+    display: flex;
+    background-color:#b696e154;
+    align-items: center;
+    width: 300px;
+}
+.conainer_produtos > ul {
+    /*
+    grid-template-columns: repeat(3, 5fr);
+    background-color:#b696e154;card_ze
+    background-color: black;
+    */
+    display: flex;
+    flex-direction: row;
+}
+.__prods{
+
+    width:150px; height:150px; padding:1rem;
+
+}
+.card_ze{
+    width: 500px;
+    height: 400px;
+  
+}
+
+.divteste{
+    width:150px; height:150px; padding:1rem;
+}

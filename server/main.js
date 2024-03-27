@@ -4,12 +4,20 @@ var select = document.getElementById('categorias');
 const categoria = "todos";
 const container_produtos = document.getElementById('container_produtos')
 const select_categorias = document.getElementById('select_categorias')
-const token ='';
+const token = '';
 const logado = document.getElementById('logado')
+const btnSalvar = document.getElementById('btnSalvar')
+const select_cad = document.getElementById('select_cad')
+const produtoCreate = document.getElementById('produtoCreate')
 
 
 
-           
+
+
+
+
+
+
 
 function getAllProducts() {
     const allData = async () => {
@@ -120,9 +128,12 @@ function adicionaImagem1(url, produto) {
 
 }
 
+
+
 function selecionandoCategorias() {
     const categoriaSelecionada = select_categorias.options[select_categorias.selectedIndex].value;
     console.log("****" + categoriaSelecionada); // pt
+
 
 
 
@@ -188,6 +199,7 @@ function carregaCategorias(categoria) {
     option.textContent = categoria.descricao;
     option.value = categoria.id;
     select_categorias.appendChild(option);
+
 }
 
 function getAllProdutosLike(nome) {
@@ -266,55 +278,74 @@ function cadastrarCategoria() {
     });
 }
 
-console.log('token '+localStorage.getItem('token'))
+console.log('token ' + localStorage.getItem('token'))
 
-function cadastroProdutos() {
-    const form = document.querySelector('cadCategoria');
-   
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const nome = document.getElementById("nome").value;
-        const descricao = document.getElementById("descricao").value;
-        const estoque = document.getElementById("estoque").value;
+produtoCreate.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const nome = document.getElementById("nome").value;
+    const descricao = document.getElementById("descricao").value;
+    const estoque = document.getElementById("estoque").value;
+    const categoriaSelecionada = select_categorias.options[select_categorias.selectedIndex].value || 1;
 
 
 
-        const newProduct = {
-            nome: nome,
-            descricao: descricao,
-            estoque: estoque,
-            categoriaId:1
-          
 
+    const newProduct = {
+        nome: nome,
+        descricao: descricao,
+        estoque: estoque,
+        categoriaId: categoriaSelecionada
+
+
+    }
+
+
+    fetch('/produtos', {
+        method: 'POST',
+        headers: {
+
+        },
+        body: newProduct
+
+
+
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error('Falhou!');
         }
+        console.log('Sucesso no upload!');
+
+    })
+        .catch((error) => {
+            console.error(error);
+        });
+
+});
 
 
 
-        fetch('/produtos', {
-            method: 'POST',
-            headers: {
-                //  'Content-Type': 'multipart/form-data'
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwiaWF0IjoxNzExMzk0NTk3fQ.iKTJ9U-U_sNPt8-i90KS41iR4k4-K4fMvNipc7EMRRY"
-            },
-            body: newProduct
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    
-                    throw new Error('Falhou!');
-                }
-                console.log('Sucesso no cadastro!');
-            })
-            .catch((error) => {
-                console.error(error);
-               
-            });
 
 
-    });
+function cadastroProdutos(newProduct) {
+    const form = document.querySelector('produtoCreate');
+
+    //const token = localStorage.getItem('token')
+    newProduct = {
+        "nome": "fandangos3",
+        "descricao": "teste",
+        "categoriaId": 1
+    }
+
+
+    console.log(newProduct)
+  
+    
+
 }
+
+
+
 
 function addUser() {
     const form = document.querySelector("addUser");
@@ -371,9 +402,65 @@ function addUser() {
 }
 
 
+
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const nome = documet.getElementById("nome").value;
+        const descricao = document.getElementById("descricao").value;
+       // const categoraId = document.getElementById('select_categorias').options[select_categorias.selectedIndex]
+
+        const newProduct = {
+            username: username,
+            password: password,
+            productId:1
+        }
+
+
+        function validaForm() {
+            if (newProduct) {
+                return true;
+            } else {
+                console.log("nenhum usuário foi preenchido!")
+                return false;
+            }
+
+
+        }
+
+
+        if (validaForm()) {
+            fetch('/produtos', {
+                method: 'POST',
+                headers: {
+
+                },
+                body: newProduct
+
+
+            }).then((response) => {
+                if (!response.ok) {
+                    throw new Error('Falhou!');
+                }
+                console.log('Sucesso no upload!');
+            })
+                .catch((error) => {
+                    console.error(error);
+                });
+
+        }
+
+    })
+
+
+
+
+
+
 function login() {
     form = document.getElementById("login")
-
+    var meuToken = document.getElementById('token')
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const username = documet.getElementById("username").value;
@@ -390,19 +477,21 @@ function login() {
 
             },
             body: userLogin
-        }).then((response)=>{
-            if(!response.ok){
+        }).then((response) => {
+            if (!response.ok) {
                 throw new Error('Não foi possível realizar o login! Verifique as credênciais!');
-          
+
             }
-            
-           
-           token = response;
-           localStorage.setItem('token',response);
-           meuToken = response;
 
 
-        }).catch((error)=>{
+            token = response;
+            localStorage.setItem('token', response.text);
+            meuToken.value = response.text;
+
+
+
+
+        }).catch((error) => {
             console.log(error)
         })
 

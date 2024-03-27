@@ -64,6 +64,8 @@ export const  findProdutoById = async(req:Request, res:Response) => {
 
 export const newProduct = async (req: Request, res: Response) => {
   console.log("chegou na rota create product")
+
+  
   const { nome,descricao,estoque,categoriaId} = req.body;
  
   console.log(req.body)
